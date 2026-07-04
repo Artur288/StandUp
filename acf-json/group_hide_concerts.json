@@ -1,0 +1,33 @@
+{
+    "key": "group_hide_concerts",
+    "title": "Блок концертов",
+    "fields": [
+        {
+            "key": "field_hide_concerts",
+            "label": "Скрыть концерты",
+            "name": "hide_concerts",
+            "type": "true_false",
+            "ui": 1,
+            "ui_on_text": "Скрыть",
+            "ui_off_text": "Показать",
+            "default_value": 0,
+            "instructions": "Если включено — секция с расписанием концертов на этой странице/таксономии не выводится"
+        }
+    ],
+    "location": [
+        [{"param": "post_type", "operator": "==", "value": "page"}],
+        [{"param": "post_type", "operator": "==", "value": "comedian"}],
+        [{"param": "post_type", "operator": "==", "value": "event"}],
+        [{"param": "post_type", "operator": "==", "value": "stage"}],
+        [{"param": "page_type", "operator": "==", "value": "front_page"}],
+        [{"param": "taxonomy", "operator": "==", "value": "city"}],
+        [{"param": "taxonomy", "operator": "==", "value": "format"}]
+    ],
+    "menu_order": 5,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000300
+}

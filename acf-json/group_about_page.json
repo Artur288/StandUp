@@ -1,0 +1,321 @@
+{
+    "key": "group_about_page",
+    "title": "Поля страницы «О нас»",
+    "fields": [
+        {
+            "key": "field_about_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "sub_fields": [
+                {
+                    "key": "field_about_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_about_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_about_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_about_top_stats_tab",
+            "label": "Статистика (верх)",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_stats_section_title",
+            "label": "Заголовок секции",
+            "name": "stats_section_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_about_stats",
+            "label": "Числа",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_about_stat_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_about_stat_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "70"}
+                }
+            ]
+        },
+        {
+            "key": "field_about_tabs_section_tab",
+            "label": "Вкладки «О нас»",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_tabs_title",
+            "label": "Заголовок секции",
+            "name": "about_tabs_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_tabs",
+            "label": "Вкладки",
+            "name": "about_tabs",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить вкладку",
+            "sub_fields": [
+                {
+                    "key": "field_about_tab_title",
+                    "label": "Название вкладки",
+                    "name": "tab_title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_tab_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "wysiwyg",
+                    "required": 1,
+                    "media_upload": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic"
+                },
+                {
+                    "key": "field_about_tab_bubbles",
+                    "label": "Бабблы",
+                    "name": "bubbles",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Добавить баббл",
+                    "sub_fields": [
+                        {
+                            "key": "field_about_bubble_title",
+                            "label": "Значение",
+                            "name": "bubble_title",
+                            "type": "text",
+                            "required": 1,
+                            "wrapper": {"width": "40"}
+                        },
+                        {
+                            "key": "field_about_bubble_description",
+                            "label": "Описание",
+                            "name": "bubble_description",
+                            "type": "text",
+                            "required": 1,
+                            "wrapper": {"width": "60"}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_about_extra_stats_tab",
+            "label": "Доп. статистика",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_extra_stats_title",
+            "label": "Заголовок секции",
+            "name": "extra_stats_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_extra_stats",
+            "label": "Числа",
+            "name": "extra_stats",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_about_extra_stat_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_extra_stat_info",
+                    "label": "Описание",
+                    "name": "info",
+                    "type": "text",
+                    "required": 1
+                }
+            ]
+        },
+        {
+            "key": "field_about_photo_text_tab",
+            "label": "Фото + текст",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_photo_text_title",
+            "label": "Заголовок секции",
+            "name": "photo_text_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_photo_text_rows",
+            "label": "Блоки",
+            "name": "photo_text_rows",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить блок",
+            "sub_fields": [
+                {
+                    "key": "field_about_pt_title",
+                    "label": "Заголовок",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_pt_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3,
+                    "required": 1
+                },
+                {
+                    "key": "field_about_pt_image",
+                    "label": "Изображение",
+                    "name": "image",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                }
+            ]
+        },
+        {
+            "key": "field_about_team_tab",
+            "label": "Команда",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_team_title",
+            "label": "Заголовок секции",
+            "name": "team_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_team",
+            "label": "Команда",
+            "name": "team",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить участника",
+            "sub_fields": [
+                {
+                    "key": "field_about_team_name",
+                    "label": "Имя",
+                    "name": "name",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_team_role",
+                    "label": "Должность",
+                    "name": "role",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_about_team_photo",
+                    "label": "Фото",
+                    "name": "photo",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                }
+            ]
+        },
+        {
+            "key": "field_about_faq_tab",
+            "label": "FAQ / форма",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_about_faq_title",
+            "label": "Заголовок секции",
+            "name": "faq_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_faq_description",
+            "label": "Описание секции",
+            "name": "faq_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_about_faq_form_title",
+            "label": "Заголовок карточки рядом с формой",
+            "name": "faq_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_about_faq_form_description",
+            "label": "Описание карточки рядом с формой",
+            "name": "faq_form_description",
+            "type": "textarea",
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-about.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000099
+}

@@ -1,0 +1,256 @@
+.is-hidden { display: none !important; }
+
+/* обёртка дат по городам — раскладывает .item месяцы так же, как родитель .date_list */
+.concert .date_list .dates-container { display: flex; gap: 20px; }
+
+/* в .about_description табы не должны перемещаться при активации */
+.about_description .cities-list li,
+.about_description .cities-list li.active { order: 0; }
+
+/* активный таб города не кликабелен и без указателя */
+.cities-list li.active { cursor: default; }
+.cities-list li a { color: inherit; text-decoration: none; display: block; }
+
+/* отключаем все псевдоэлементы с bg_slider.png — заменены на реальные .swiper-edge */
+.comic_list .comic_swiper:before,
+.comic_list .comic_swiper:after,
+.video_concert_list .video_swiper:before,
+.category_list .category_swiper:before,
+.category_list .category_swiper:after,
+.stages_rowlist_swiper::before,
+.stages_rowlist_swiper::after { display: none !important; }
+
+/* общие стили для edge-дивов */
+.swiper-edge {
+	background: url(../images/bg_slider.png);
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 300px;
+	z-index: 2;
+	pointer-events: none;
+	transition: opacity .3s ease;
+}
+.swiper-edge--left  { left: 0; transform: rotate(180deg); }
+.swiper-edge--right { right: 0; }
+
+/* stages_rowlist_swiper — нестандартные позиции (немного вылезают за границы) */
+.swiper-edge--stages.swiper-edge--right { right: -206px; width: 391px; }
+.swiper-edge--stages.swiper-edge--left  { left: -195px;  width: 391px; }
+
+.swiper-edge.is-faded { opacity: 0; }
+
+/* плашки-фейды для слайдера комиков текущего месяца — показ завязан на позицию свайпера */
+.comic-fade {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: 100px;
+	z-index: 2;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+.comic-fade--right { right: 0; background: linear-gradient(90deg, rgba(13,12,12,0), #0D0C0C); }
+.comic-fade--left  { left: 0;  background: linear-gradient(270deg, rgba(13,12,12,0), #0D0C0C); }
+.comic-fade.is-active { opacity: 1; }
+.comic-fade.is-active.is-faded { opacity: 0; }
+
+
+/* контакты в FAQ-секции переносятся на следующую строку, если не вмещаются */
+.about_faq__contacts { flex-wrap: wrap; }
+@media (max-width: 991px) {
+	.about_faq__contacts { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+
+/* нет hover-фото — не прячем основное на ховере */
+.stages .stages_list .stages_item--no-hover .images:hover .image_1 { display: block; }
+.concert .concert_list .concert_item--no-hover .images:hover .image_1 { display: block; }
+
+.video_card { position: relative; overflow: hidden; height: 100%; }
+
+.video_card__link {
+	display: block;
+	position: relative;
+	text-decoration: none;
+}
+
+.video_card__link img {
+	display: block;
+	width: 100%;
+	height: auto;
+	transition: transform .4s ease;
+}
+
+.video_card__link:hover img {
+	transform: scale(1.04);
+}
+
+.video_card__play {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	transition: transform .3s ease, opacity .3s ease;
+}
+
+.video_card__play svg {
+	width: 84px;
+	height: 84px;
+	filter: drop-shadow(0 6px 18px rgba(0,0,0,.45));
+	transition: transform .3s ease;
+}
+
+.video_card__link:hover .video_card__play svg {
+	transform: scale(1.08);
+}
+
+/* попап «Инфо» площадки — открытие/закрытие как у order_event_modal */
+.stage_info_modal {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: none;
+}
+.stage_info_modal.active {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.stage_info_modal__overlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.6);
+}
+.stage_info_modal__content {
+	position: relative;
+	box-sizing: border-box;
+	width: 90vw;
+	max-width: 895px;
+	max-height: 90vh;
+	overflow: auto;
+	border-radius: 14px;
+	background: #0D0C0C;
+	padding: 30px 27px 34px;
+	z-index: 1;
+}
+.stage_info_modal__close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	background: transparent;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	display: flex;
+}
+.stage_info_modal__date {
+	color: rgba(238, 237, 222, 0.7);
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+.stage_info_modal__title {
+	color: #EEEDDE;
+	font-size: 35px;
+	font-weight: 700;
+	line-height: 1.05;
+	padding-right: 50px;
+}
+.stage_info_modal__meta {
+	margin-top: 10px;
+	color: rgba(238, 237, 222, 0.7);
+	font-size: 14px;
+	letter-spacing: 0.14px;
+}
+
+.stage_info_modal__gallery {
+	margin-top: 28px;
+}
+.stage-info-swiper {
+	position: relative;
+	overflow: hidden;
+}
+.stage-info-swiper .swiper-slide {
+	width: 312px;
+	height: 193px;
+}
+.stage-info-swiper .swiper-slide img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.stage-info-swiper__edge {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 135px;
+	height: 100%;
+	z-index: 2;
+	pointer-events: none;
+	background: linear-gradient(90deg, rgba(13,12,12,0), #0D0C0C);
+	transition: opacity .3s ease;
+}
+.stage-info-swiper__next {
+	position: absolute;
+	top: 50%;
+	right: 14px;
+	transform: translateY(-50%);
+	z-index: 3;
+	background: transparent;
+	border: 0;
+	padding: 6px;
+	cursor: pointer;
+	display: flex;
+	transition: opacity .3s ease;
+}
+.stage-info-swiper.is-end .stage-info-swiper__edge,
+.stage-info-swiper.is-end .stage-info-swiper__next {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.stage_info_modal__desc-wrap {
+	margin-top: 28px;
+}
+.stage_info_modal__desc {
+	color: #EEEDDE;
+	font-size: 16px;
+	line-height: 1.25;
+	max-width: 696px;
+	max-height: 5em;
+	overflow: hidden;
+	transition: max-height .3s ease;
+}
+.stage_info_modal__desc.is-expanded {
+	max-height: 2000px;
+}
+.stage_info_modal__desc p {
+	margin: 0 0 .6em;
+}
+.stage_info_modal__desc-wrap .event-format__link {
+	margin-top: 14px;
+	cursor: pointer;
+}
+.stage_info_modal__desc-wrap .event-format__link span {
+	font-size: 16px;
+	font-weight: 500;
+}
+.stage_info_modal__desc-wrap .event-format__link svg {
+	transition: transform .3s ease;
+}
+.stage_info_modal__desc-wrap .event-format__link.active svg {
+	transform: rotate(180deg);
+}
+.stage_info_modal__buy {
+	margin-top: 24px;
+}
+
+@media (max-width: 767px) {
+	.stage_info_modal__content { padding: 24px 18px 28px; }
+	.stage_info_modal__title { font-size: 22px; padding-right: 36px; }
+	.stage-info-swiper .swiper-slide { width: 240px; height: 150px; }
+	.stage-info-swiper__edge { width: 70px; }
+}

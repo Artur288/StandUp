@@ -1,0 +1,90 @@
+{
+    "key": "group_form_submission_fields",
+    "title": "Поля заявки",
+    "fields": [
+        {
+            "key": "field_submission_form_type",
+            "label": "Тип формы",
+            "name": "form_type",
+            "type": "select",
+            "choices": {
+                "order_event": "Заказать мероприятие",
+                "cooperation": "Сотрудничество",
+                "corporate": "Корпоратив",
+                "perform": "Выступить"
+            },
+            "return_format": "value"
+        },
+        {
+            "key": "field_submission_name",
+            "label": "ФИО",
+            "name": "name",
+            "type": "text"
+        },
+        {
+            "key": "field_submission_phone",
+            "label": "Телефон",
+            "name": "phone",
+            "type": "text"
+        },
+        {
+            "key": "field_submission_email",
+            "label": "E-mail",
+            "name": "email",
+            "type": "email"
+        },
+        {
+            "key": "field_submission_message",
+            "label": "Сообщение",
+            "name": "message",
+            "type": "textarea",
+            "rows": 4
+        },
+        {
+            "key": "field_submission_event_date",
+            "label": "Дата мероприятия",
+            "name": "event_date",
+            "type": "text",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_submission_form_type",
+                        "operator": "==",
+                        "value": "order_event"
+                    }
+                ]
+            ]
+        },
+        {
+            "key": "field_submission_event_format",
+            "label": "Формат события",
+            "name": "event_format",
+            "type": "text",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_submission_form_type",
+                        "operator": "==",
+                        "value": "order_event"
+                    }
+                ]
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "form_submission"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000099
+}

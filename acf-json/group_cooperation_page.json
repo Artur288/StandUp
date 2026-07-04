@@ -1,0 +1,182 @@
+{
+    "key": "group_cooperation_page",
+    "title": "Поля страницы «Сотрудничество»",
+    "fields": [
+        {
+            "key": "field_coop_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_coop_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "sub_fields": [
+                {
+                    "key": "field_coop_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_coop_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_coop_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_coop_tabs_section_tab",
+            "label": "Вкладки",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_coop_tabs_title",
+            "label": "Заголовок секции",
+            "name": "cooperation_tabs_title",
+            "type": "text"
+        },
+        {
+            "key": "field_coop_tabs",
+            "label": "Вкладки",
+            "name": "cooperation_tabs",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить вкладку",
+            "sub_fields": [
+                {
+                    "key": "field_coop_tab_title",
+                    "label": "Название вкладки",
+                    "name": "tab_title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_coop_tab_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "wysiwyg",
+                    "required": 1,
+                    "media_upload": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic"
+                },
+                {
+                    "key": "field_coop_tab_bubbles",
+                    "label": "Бабблы",
+                    "name": "bubbles",
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Добавить баббл",
+                    "sub_fields": [
+                        {
+                            "key": "field_coop_bubble_title",
+                            "label": "Значение",
+                            "name": "bubble_title",
+                            "type": "text",
+                            "required": 1,
+                            "wrapper": {"width": "40"}
+                        },
+                        {
+                            "key": "field_coop_bubble_description",
+                            "label": "Описание",
+                            "name": "bubble_description",
+                            "type": "text",
+                            "required": 1,
+                            "wrapper": {"width": "60"}
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_coop_partners_tab",
+            "label": "Партнёры",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_coop_partner_stages_title",
+            "label": "Заголовок секции",
+            "name": "partner_stages_title",
+            "type": "text"
+        },
+        {
+            "key": "field_coop_partner_stages_description",
+            "label": "Описание секции",
+            "name": "partner_stages_description",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_coop_partner_stages_link_label",
+            "label": "Подпись ссылки «все площадки»",
+            "name": "partner_stages_link_label",
+            "type": "text"
+        },
+        {
+            "key": "field_coop_faq_tab",
+            "label": "FAQ / форма",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_coop_faq_title",
+            "label": "Заголовок секции",
+            "name": "faq_title",
+            "type": "text"
+        },
+        {
+            "key": "field_coop_faq_description",
+            "label": "Описание секции",
+            "name": "faq_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_coop_faq_form_title",
+            "label": "Заголовок карточки рядом с формой",
+            "name": "faq_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_coop_faq_form_description",
+            "label": "Описание карточки рядом с формой",
+            "name": "faq_form_description",
+            "type": "textarea",
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-cooperation.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000099
+}

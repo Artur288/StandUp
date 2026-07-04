@@ -1,0 +1,456 @@
+{
+    "key": "group_format_term_fields",
+    "title": "Поля формата",
+    "fields": [
+        {
+            "key": "field_format_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Hero на странице формата",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_format_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_format_hero_slides",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_format_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "preview_size": "medium",
+                    "parent_repeater": "field_format_hero_slides",
+                    "library": "all",
+                    "min_width": 0,
+                    "min_height": 0,
+                    "min_size": 0,
+                    "max_width": 0,
+                    "max_height": 0,
+                    "max_size": 0,
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_format_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "",
+                    "required": false,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "parent_repeater": "field_format_hero_slides",
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
+        },
+        {
+            "key": "field_format_card_image",
+            "label": "Фото в карточке",
+            "name": "card_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Выводится в .category_card на главной и других страницах со списком форматов",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_format_icon",
+            "label": "Иконка формата",
+            "name": "icon",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Круглая PNG-иконка для блока «Наши форматы» на главной",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_format_city",
+            "label": "Город",
+            "name": "city",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "К какому городу относится этот формат",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "city",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_format_related_formats",
+            "label": "Связанные форматы",
+            "name": "related_formats",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Тот же формат в других городах. Группа симметричная: связь выставляется автоматически в обе стороны.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "format",
+            "field_type": "multi_select",
+            "allow_null": 1,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 1,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_format_bubbles",
+            "label": "Бабблы",
+            "name": "bubbles",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Добавить баббл",
+            "min": 0,
+            "max": 0,
+            "rows_per_page": 20,
+            "collapsed": "",
+            "sub_fields": [
+                {
+                    "key": "field_format_bubble_title",
+                    "label": "Значение",
+                    "name": "bubble_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": false,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "placeholder": "5–7 мин",
+                    "default_value": "",
+                    "maxlength": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_format_bubbles"
+                },
+                {
+                    "key": "field_format_bubble_description",
+                    "label": "Описание",
+                    "name": "bubble_description",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "на каждого комика",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_format_bubbles"
+                }
+            ]
+        },
+        {
+            "key": "field_format_gallery",
+            "label": "Галерея",
+            "name": "gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "Показывается в модалке любого события этого формата",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all",
+            "min": 0,
+            "max": 0,
+            "min_width": 0,
+            "min_height": 0,
+            "min_size": 0,
+            "max_width": 0,
+            "max_height": 0,
+            "max_size": 0,
+            "mime_types": ""
+        },
+        {
+            "key": "field_format_events_layout",
+            "label": "Вывод событий на странице формата",
+            "name": "events_layout",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "blocks": "Карточки-блоки",
+                "list": "Плоский список"
+            },
+            "layout": "horizontal",
+            "return_format": "value",
+            "default_value": "",
+            "other_choice": 0,
+            "save_other_choice": 0,
+            "allow_null": 0
+        },
+        {
+            "key": "field_format_is_excursion",
+            "label": "Экскурсия",
+            "name": "is_excursion",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "У событий этого формата «Инфо» открывает попап экскурсии (галерея + описание + цена)",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_format_show_hedliter",
+            "label": "Показывать блок «Хедлайнеры»",
+            "name": "show_hedliter",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 1,
+            "message": ""
+        },
+        {
+            "key": "field_format_videos_title",
+            "label": "Заголовок блока видео",
+            "name": "videos_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если пусто — берётся глобальный заголовок из настроек темы",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_format_comedians_title",
+            "label": "Заголовок блока комиков",
+            "name": "comedians_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если пусто — берётся глобальный заголовок из настроек темы",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_format_comedians_description",
+            "label": "Описание блока комиков",
+            "name": "comedians_description",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Если пусто — берётся глобальное описание",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_format_show_comedians_cta",
+            "label": "Показывать кнопку «Все комики»",
+            "name": "show_comedians_cta",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 1,
+            "message": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "format"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1900000300
+}

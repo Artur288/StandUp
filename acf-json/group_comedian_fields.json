@@ -1,0 +1,231 @@
+{
+    "key": "group_comedian_fields",
+    "title": "Поля комика",
+    "fields": [
+        {
+            "key": "field_comedian_cities",
+            "label": "Города",
+            "name": "cities",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Города, в которых выступает комик. Используется для фильтра на архиве комиков.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "city",
+            "field_type": "checkbox",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "id",
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional": 0,
+            "bidirectional_target": []
+        },
+        {
+            "key": "field_comedian_is_headliner",
+            "label": "Хедлайнер",
+            "name": "is_headliner",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "ui": 1
+        },
+        {
+            "key": "field_comedian_headliner_photo",
+            "label": "Фото для хедлайнера",
+            "name": "headliner_photo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Используется в блоке «Хедлайнеры месяца» на странице формата. Если пусто — берётся основное фото комика.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_comedian_is_headliner",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_comedian_tagline",
+            "label": "Подпись на карточке",
+            "name": "tagline",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Короткая подпись типа «Резидент клуба, 5 лет в стендапе»",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_comedian_thumbnail_hover",
+            "label": "Фото для страницы комика (десктоп)",
+            "name": "thumbnail_hover",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_comedian_page_photo_mobile",
+            "label": "Фото для страницы комика (мобильное)",
+            "name": "page_photo_mobile",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_comedian_patronymic",
+            "label": "Отчество",
+            "name": "patronymic",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_comedian_dob",
+            "label": "Дата рождения",
+            "name": "date_of_birth",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d.m.Y",
+            "return_format": "d.m.Y",
+            "first_day": 1,
+            "default_to_current_date": 0,
+            "allow_in_bindings": 1
+        },
+        {
+            "key": "field_comedian_birthplace",
+            "label": "Место рождения",
+            "name": "birthplace",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "comedian"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1900000099
+}

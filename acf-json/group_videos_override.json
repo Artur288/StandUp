@@ -1,0 +1,59 @@
+{
+    "key": "group_videos_override",
+    "title": "Блок «Видео»",
+    "fields": [
+        {
+            "key": "field_videos_override_title",
+            "label": "Заголовок",
+            "name": "videos_section_title",
+            "type": "text",
+            "instructions": "Если пусто — берётся из настроек темы"
+        },
+        {
+            "key": "field_videos_override_list",
+            "label": "Видео",
+            "name": "videos",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить видео",
+            "instructions": "Если пусто — берётся из настроек темы",
+            "sub_fields": [
+                {
+                    "key": "field_videos_override_thumbnail",
+                    "label": "Превью",
+                    "name": "thumbnail",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id",
+                    "wrapper": {"width": "30"},
+                    "parent_repeater": "field_videos_override_list"
+                },
+                {
+                    "key": "field_videos_override_url",
+                    "label": "Ссылка на видео или фото",
+                    "name": "video_url",
+                    "type": "text",
+                    "wrapper": {"width": "70"},
+                    "instructions": "URL видео (YouTube, mp4) или фото — открывается в Fancybox. Если пусто — карточка показывает превью без модалки.",
+                    "parent_repeater": "field_videos_override_list"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [{"param": "post_type", "operator": "==", "value": "page"}],
+        [{"param": "post_type", "operator": "==", "value": "comedian"}],
+        [{"param": "post_type", "operator": "==", "value": "event"}],
+        [{"param": "post_type", "operator": "==", "value": "stage"}],
+        [{"param": "page_type", "operator": "==", "value": "front_page"}],
+        [{"param": "taxonomy", "operator": "==", "value": "city"}],
+        [{"param": "taxonomy", "operator": "==", "value": "format"}]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000301
+}

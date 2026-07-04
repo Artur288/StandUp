@@ -1,0 +1,76 @@
+{
+    "key": "group_stage_fields",
+    "title": "Поля площадки",
+    "fields": [
+        {
+            "key": "field_stage_subtitle",
+            "label": "Метро",
+            "name": "metro",
+            "type": "text"
+        },
+        {
+            "key": "field_stage_address",
+            "label": "Адрес",
+            "name": "address",
+            "type": "text",
+            "required": 1
+        },
+        {
+            "key": "field_stage_map_url",
+            "label": "Ссылка на карту",
+            "name": "map_url",
+            "type": "url",
+            "instructions": "Яндекс или Google Maps — для кнопки «Показать на карте»"
+        },
+        {
+            "key": "field_stage_info_url",
+            "label": "Ссылка «Инфо»",
+            "name": "info_url",
+            "type": "url",
+            "instructions": "Внешняя ссылка для кнопки «Инфо» (сайт площадки, страница в соцсетях и т.д.)"
+        },
+        {
+            "key": "field_stage_thumbnail_hover",
+            "label": "Фото для hover-эффекта",
+            "name": "thumbnail_hover",
+            "type": "image",
+            "return_format": "id",
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_stage_gallery",
+            "label": "Галерея (попап)",
+            "name": "gallery",
+            "type": "gallery",
+            "return_format": "id",
+            "preview_size": "medium",
+            "instructions": "Фото для попапа «Инфо»"
+        },
+        {
+            "key": "field_stage_popup_description",
+            "label": "Описание (попап)",
+            "name": "popup_description",
+            "type": "wysiwyg",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "instructions": "Текст для попапа «Инфо», кнопка «Подробнее» раскрывает полностью"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "stage"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000200
+}

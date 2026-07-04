@@ -1,0 +1,45 @@
+{
+    "key": "group_city_home_page",
+    "title": "Привязка к городу",
+    "fields": [
+        {
+            "key": "field_city_home_page_city",
+            "label": "Город",
+            "name": "city",
+            "type": "taxonomy",
+            "taxonomy": "city",
+            "field_type": "select",
+            "allow_null": 0,
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "return_format": "id",
+            "multiple": 0,
+            "required": 1,
+            "instructions": "Контент главной берётся с этого города (поля редактируются в Города → нужный город)"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-city-home.php"
+            }
+        ],
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "front_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000201
+}

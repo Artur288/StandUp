@@ -1,0 +1,230 @@
+{
+    "key": "group_corporate_page",
+    "title": "Поля страницы «Корпоративы»",
+    "fields": [
+        {
+            "key": "field_corp_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_corp_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "sub_fields": [
+                {
+                    "key": "field_corp_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_corp_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_corp_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_corp_intro_tab",
+            "label": "Hero-блок",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_corp_intro_title",
+            "label": "Заголовок блока",
+            "name": "intro_title",
+            "type": "text"
+        },
+        {
+            "key": "field_corp_intro_description",
+            "label": "Описание блока",
+            "name": "intro_description",
+            "type": "wysiwyg",
+            "media_upload": 0,
+            "tabs": "visual",
+            "toolbar": "basic"
+        },
+        {
+            "key": "field_corp_hero_bubbles",
+            "label": "Бабблы",
+            "name": "hero_bubbles",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_corp_hero_bubble_title",
+                    "label": "Значение",
+                    "name": "title",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "40"}
+                },
+                {
+                    "key": "field_corp_hero_bubble_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "60"}
+                }
+            ]
+        },
+        {
+            "key": "field_corp_formats_tab",
+            "label": "Форматы",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_corp_formats_title",
+            "label": "Заголовок секции",
+            "name": "corporate_formats_title",
+            "type": "text"
+        },
+        {
+            "key": "field_corp_formats",
+            "label": "Форматы",
+            "name": "corporate_formats",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить формат",
+            "sub_fields": [
+                {
+                    "key": "field_corp_format_title",
+                    "label": "Название",
+                    "name": "tab_title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_corp_format_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "wysiwyg",
+                    "required": 1,
+                    "media_upload": 0,
+                    "tabs": "visual",
+                    "toolbar": "basic"
+                },
+                {
+                    "key": "field_corp_format_image",
+                    "label": "Изображение",
+                    "name": "image",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_corp_format_cta",
+                    "label": "Текст кнопки",
+                    "name": "cta_label",
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_corp_comedians_tab",
+            "label": "Комики",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_corp_comedians_title",
+            "label": "Заголовок секции",
+            "name": "comedians_section_title",
+            "type": "text"
+        },
+        {
+            "key": "field_corp_comedian_sections",
+            "label": "Подсекции комиков",
+            "name": "comedian_sections",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить подсекцию",
+            "sub_fields": [
+                {
+                    "key": "field_corp_cs_title",
+                    "label": "Заголовок подсекции",
+                    "name": "section_title",
+                    "type": "text",
+                    "required": 1
+                },
+                {
+                    "key": "field_corp_cs_comedians",
+                    "label": "Комики",
+                    "name": "comedians",
+                    "type": "relationship",
+                    "post_type": ["comedian"],
+                    "filters": ["search", "taxonomy"],
+                    "return_format": "id"
+                }
+            ]
+        },
+        {
+            "key": "field_corp_faq_tab",
+            "label": "FAQ / форма",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_corp_faq_title",
+            "label": "Заголовок секции",
+            "name": "faq_title",
+            "type": "text"
+        },
+        {
+            "key": "field_corp_faq_description",
+            "label": "Описание секции",
+            "name": "faq_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_corp_faq_form_title",
+            "label": "Заголовок карточки рядом с формой",
+            "name": "faq_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_corp_faq_form_description",
+            "label": "Описание карточки рядом с формой",
+            "name": "faq_form_description",
+            "type": "textarea",
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-corporate.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000099
+}
