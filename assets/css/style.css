@@ -1676,7 +1676,6 @@ footer .footer_bottom li a:hover {
 }
 .event-format__bubble:nth-child(3) {
   align-self: flex-start;
-  margin-top: 20px;
 }
 .event-format__bubble .title_block {
   color: #EEEDDE;
