@@ -2159,6 +2159,13 @@ footer .footer_bottom li a:hover {
   line-height: 97%;
   margin-bottom: 33px;
 }
+
+.swiper-list_hedliter .swiper-edge--right {
+  right: -144px;
+}
+.swiper-list_hedliter .swiper-button-next:after {
+  font-size: 29px;
+}
 @media (max-width: 1480px) {
   .single-event .event-format__right {
     min-width: 500px;
@@ -2346,6 +2353,14 @@ footer .footer_bottom li a:hover {
   }
   .stages .stages_list .stages_item .controls {
     margin-top: 0;
+  }
+
+  .swiper-list_hedliter .swiper-edge--right {
+    right: -10px;
+    width: 194px;
+  }
+  .swiper-list_hedliter .swiper-button-next {
+    right: 0;
   }
 }
 .about_faq__contacts {
