@@ -62,6 +62,17 @@
             "toolbar": "basic"
         },
         {
+            "key": "field_cert_hide_bubbles",
+            "label": "Скрыть блок",
+            "name": "hide_bubbles",
+            "type": "true_false",
+            "instructions": "Не выводить блок бабблов на странице",
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0
+        },
+        {
             "key": "field_cert_bubbles",
             "label": "Бабблы",
             "name": "bubbles",
@@ -175,5 +186,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000099
+    "modified": 1900000308
 }

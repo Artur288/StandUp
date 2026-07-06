@@ -24,24 +24,46 @@ $address_line = trim(implode(' / ', array_filter([$stage_metro, $stage_addr])));
 
 $format_terms   = get_the_terms($event_id, 'format');
 $format         = (!empty($format_terms) && !is_wp_error($format_terms)) ? $format_terms[0] : null;
-$format_bubbles = $format ? (get_field('bubbles', 'format_' . $format->term_id) ?: []) : [];
+$format_term_id = $format ? (int) $format->term_id : 0;
+$format_bubbles = $format && !get_field('hide_bubbles', 'format_' . $format->term_id) ? (get_field('bubbles', 'format_' . $format->term_id) ?: []) : [];
 $format_gallery = $format ? (get_field('gallery', 'format_' . $format->term_id) ?: []) : [];
 
 $date_long       = $event_date ? standup_format_event_date_long($event_date) : '';
 $schedule_times  = array_values(array_filter(array_map(fn($s) => $s['time'] ?? '', $schedule)));
 $first_ticket    = $schedule[0]['ticket_url'] ?? '';
 $description     = ($format && $format->description !== '') ? wpautop(wp_kses_post($format->description)) : '';
+
+// бесплатное мероприятие: своя шапка (дата/время/сбор гостей/18+) и бабблы вместо обычных
+$is_free_event      = $format_term_id ? (bool) get_field('is_free_event', 'format_' . $format_term_id) : false;
+$free_event_header  = '';
+$free_event_bubbles = [];
+if ($is_free_event) {
+	$free_event_header = standup_free_event_header($event_id, $format_term_id);
+
+	$is_18_plus = standup_event_is_18_plus($event_id, $format_term_id);
+	$has_mat    = standup_event_has_mat($event_id, $format_term_id);
+	$duration   = standup_event_duration($event_id, $format_term_id);
+
+	if ($duration !== '') $free_event_bubbles[] = ['bubble_title' => $duration, 'bubble_description' => 'продолжительность'];
+	if ($is_18_plus)      $free_event_bubbles[] = ['bubble_title' => '18+', 'bubble_description' => 'возрастное ограничение'];
+	if ($has_mat)         $free_event_bubbles[] = ['bubble_title' => 'Мат', 'bubble_description' => 'может присутствовать'];
+}
+$info_bubbles = $is_free_event ? $free_event_bubbles : $format_bubbles;
 ?>
 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none" class="concert_modal__close">
 	<path d="M9.49027 11.2812L32.7614 29.5541" stroke="#EEEDDE" stroke-width="2" stroke-linecap="square"/>
 	<path d="M8.77689 29.5488L32.048 11.276" stroke="#EEEDDE" stroke-width="2" stroke-linecap="square"/>
 </svg>
 
-<?php if ($date_long): ?>
+<?php if ($is_free_event): ?>
+	<?php if ($free_event_header !== ''): ?>
+		<div class="date"><?php echo esc_html($free_event_header); ?></div>
+	<?php endif; ?>
+<?php elseif ($date_long): ?>
 	<div class="date"><?php echo esc_html($date_long); ?></div>
 <?php endif; ?>
 
-<?php if (!empty($lineup)): ?>
+<?php if (!$is_free_event && !empty($lineup)): ?>
 	<div class="event_comics">
 		<div class="title">Состав:</div>
 		<div class="swiper event_comics_list">
@@ -79,7 +101,7 @@ $description     = ($format && $format->description !== '') ? wpautop(wp_kses_po
 	<div class="title">О формате:</div>
 	<div class="groups">
 		<div class="info_list">
-			<?php foreach ($format_bubbles as $bubble):
+			<?php foreach ($info_bubbles as $bubble):
 				$btitle = (string) ($bubble['bubble_title'] ?? '');
 				$bdescr = (string) ($bubble['bubble_description'] ?? '');
 				if ($btitle === '' && $bdescr === '') continue;
@@ -133,7 +155,9 @@ $description     = ($format && $format->description !== '') ? wpautop(wp_kses_po
 	</div>
 <?php endif; ?>
 
-<?php if ($first_ticket !== ''): ?>
+<?php if ($is_free_event): ?>
+	<div class="btn js-free-event-book" data-target="freeEventBookingModal-<?php echo (int) $event_id; ?>"><span>Бронировать</span></div>
+<?php elseif ($first_ticket !== ''): ?>
 	<div class="btn">
 		<a href="<?php echo esc_url($first_ticket); ?>" target="_blank" rel="noopener">Купить билет</a>
 	</div>

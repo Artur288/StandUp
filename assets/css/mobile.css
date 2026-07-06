@@ -31,6 +31,9 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
     z-index: 2;
     top: 0;
   }
+  .sponsor-statistics::before {
+    content: none;
+  }
   .statistics {
     position: relative;
   }
@@ -39,6 +42,13 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .event-format__left {
     max-width: 50%;
+  }
+
+  .sponsor-content .event-format__bubble:nth-child(2) {
+    margin-top: 5px;
+  }
+  .sponsor-content .event-format__bubble:last-child {
+    margin-top: 5px;
   }
 }
 @media (max-width: 1440px) {
@@ -590,6 +600,25 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   .statistics .statistics_list .stat_item .info {
     font-size: 9px;
   }
+
+  .statistics .statistics_list .statistics_block {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .statistics .statistics_list .statistics_block .stat_item:nth-child(2) {
+    margin-top: 0;
+    margin-left: auto;
+  }
+  .statistics .statistics_list .statistics_block .stat_item {
+    gap: 5px;
+  }
+  .statistics .statistics_list .statistics_block .stat_item .number {
+    font-size: 23px;
+  }
+  .statistics .statistics_list .statistics_block .stat_item .info {
+    font-size: 12px;
+    width: 100%;
+  }
   footer .footer_bottom {
     font-size: 8px;
   }
@@ -627,6 +656,32 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .stages .stages_list .stage_title span {
     font-size: 10px;
+  }
+
+  .sponsor-format {
+    padding: 0;
+  }
+  .sponsor-content .event-format__bubble {
+    height: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    gap: 0;
+  }
+  .sponsor-content .event-format__bubble:first-child {
+    order: 2;
+    /* margin-right: 110px; */
+  }
+  .sponsor-content .event-format__bubble:nth-child(2) {
+    order: 1;
+    margin-left: 0;
+    align-self: start;
+    margin-right: 0;
+    margin-top: -40px;
+  }
+  .sponsor-content .event-format__bubble:last-child {
+    order: 0;
+    margin-left: auto;
+    margin-right: 0;
   }
 }
 @media (max-width: 560px) {

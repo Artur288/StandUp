@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
       var phone = form.querySelector('[name="phone"]');
       var email = form.querySelector('[name="email"]');
       var message = form.querySelector('[name="message"]');
+      var guests = form.querySelector('[name="guests"]');
+      var eventId = form.querySelector('[name="event_id"]');
+      var consent = form.querySelector('[name="consent"]');
       var formTypeInput = form.querySelector('[name="form_type"]');
 
       form.querySelectorAll('.field--error').forEach(function (el) {
@@ -75,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
         errors.push('Некорректный e-mail');
         email.closest('.about_faq__field').classList.add('field--error');
       }
+      if (consent && !consent.checked) {
+        errors.push('Подтвердите согласие на обработку персональных данных');
+      }
 
       if (errors.length) {
         if (typeof window.showNotify === 'function') {
@@ -96,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function () {
       data.append('phone', phone.value.trim());
       data.append('email', email.value.trim());
       data.append('message', message ? message.value.trim() : '');
+      if (guests) data.append('guests', guests.value.trim());
+      if (eventId) data.append('event_id', eventId.value.trim());
 
       var url = (window.aboutAjax && window.aboutAjax.ajax_url) || '';
       if (!url) return;

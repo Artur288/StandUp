@@ -65,8 +65,11 @@ $stages_archive_url = get_post_type_archive_link('stage');
 						<h2><?php echo esc_html($tabs_title); ?></h2>
 					<?php endif; ?>
 					<ul class="cities-list is-tabs about_description__tabs">
-						<?php foreach ($tabs as $i => $tab): ?>
-							<li data-tab="<?php echo (int) $i; ?>"<?php echo $i === 0 ? ' class="active"' : ''; ?>><span><?php echo esc_html($tab['tab_title'] ?? ''); ?></span></li>
+						<?php $is_first_tab = true; foreach ($tabs as $i => $tab):
+							if (!empty($tab['hide_bubbles'])) continue;
+							?>
+							<li data-tab="<?php echo (int) $i; ?>"<?php echo $is_first_tab ? ' class="active"' : ''; ?>><span><?php echo esc_html($tab['tab_title'] ?? ''); ?></span></li>
+							<?php $is_first_tab = false; ?>
 						<?php endforeach; ?>
 					</ul>
 				</div>
@@ -74,10 +77,11 @@ $stages_archive_url = get_post_type_archive_link('stage');
 		</div>
 		<div class="container">
 			<div class="about_description__panels">
-				<?php foreach ($tabs as $i => $tab):
+				<?php $is_first_panel = true; foreach ($tabs as $i => $tab):
+					if (!empty($tab['hide_bubbles'])) continue;
 					$tab_bubbles = $tab['bubbles'] ?? [];
 					?>
-					<div class="about_description__panel<?php echo $i === 0 ? ' active' : ''; ?>" data-tab-panel="<?php echo (int) $i; ?>">
+					<div class="about_description__panel<?php echo $is_first_panel ? ' active' : ''; ?>" data-tab-panel="<?php echo (int) $i; ?>">
 						<div class="event-format">
 							<div class="event-format__content">
 								<div class="event-format__left">
@@ -101,6 +105,7 @@ $stages_archive_url = get_post_type_archive_link('stage');
 							</div>
 						</div>
 					</div>
+					<?php $is_first_panel = false; ?>
 				<?php endforeach; ?>
 			</div>
 		</div>

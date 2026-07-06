@@ -10,11 +10,17 @@ if (!$term || empty($term->term_id)) {
 $term_id          = (int) $term->term_id;
 $hero_slides      = get_field('hero_slides', 'format_' . $term_id) ?: [];
 $bubbles          = get_field('bubbles', 'format_' . $term_id) ?: [];
+$hide_bubbles     = (bool) get_field('hide_bubbles', 'format_' . $term_id);
 $events_layout    = (string) get_field('events_layout', 'format_' . $term_id);
 $events_layout    = ($events_layout === 'list') ? 'list' : 'blocks';
 $is_excursion     = (bool) get_field('is_excursion', 'format_' . $term_id);
+$is_free_event    = (bool) get_field('is_free_event', 'format_' . $term_id);
 
 $format_city_id   = (int) get_field('city', 'format_' . $term_id);
+// у дочернего терма город не указан — берём город родителя
+if (!$format_city_id && $term->parent) {
+	$format_city_id = (int) get_field('city', 'format_' . $term->parent);
+}
 $related_ids      = array_map('intval', (array) get_field('related_formats', 'format_' . $term_id));
 
 $hedliter_title           = (string) get_field('format_hedliter_title', 'option');
@@ -25,6 +31,7 @@ $f_comedians_description  = (string) get_field('format_comedians_description', '
 
 $show_hedliter            = (bool) get_field('show_hedliter', 'format_' . $term_id);
 $show_comedians_cta       = (bool) get_field('show_comedians_cta', 'format_' . $term_id);
+$hide_comedians           = (bool) get_field('hide_comedians', 'format_' . $term_id);
 $term_videos_title        = (string) get_field('videos_title', 'format_' . $term_id);
 $term_comedians_title     = (string) get_field('comedians_title', 'format_' . $term_id);
 $term_comedians_descr     = (string) get_field('comedians_description', 'format_' . $term_id);
@@ -47,6 +54,27 @@ foreach ($related_ids as $rid) {
 uasort($city_tabs, fn($a, $b) => $a['term_id'] <=> $b['term_id']);
 // текущий город — активный таб
 $current_city = $format_city_id ? get_term($format_city_id, 'city') : null;
+
+// табы дочерних термов формата (например, конкретные площадки одной концепции).
+// если у терма есть родитель — берём всех детей родителя (себя + братьев), иначе — своих детей
+$format_subtabs = [];
+$subtabs_parent_id = $term->parent ?: $term_id;
+$sibling_terms = get_terms([
+	'taxonomy'   => 'format',
+	'parent'     => $subtabs_parent_id,
+	'hide_empty' => false,
+	'orderby'    => 'term_id',
+	'order'      => 'ASC',
+]);
+if (!is_wp_error($sibling_terms) && !empty($sibling_terms)) {
+	foreach ($sibling_terms as $sib) {
+		$format_subtabs[] = [
+			'name'   => $sib->name,
+			'url'    => get_term_link($sib),
+			'active' => ($sib->term_id === $term_id),
+		];
+	}
+}
 
 // комики из событий этого формата (в городе формата)
 $format_event_ids = [];
@@ -143,6 +171,7 @@ if ($show_hedliter) {
 				<h2><?php echo esc_html($hedliter_title); ?></h2>
 			<?php endif; ?>
 			<div class="swiper swiper-list_hedliter">
+				<div class="swiper-edge swiper-edge--right"></div>
 				<div class="swiper-wrapper">
 					<?php foreach ($hedliters as $comedian):
 						$name_parts        = explode(' ', $comedian->post_title, 2);
@@ -164,6 +193,7 @@ if ($show_hedliter) {
 						</div>
 					<?php endforeach; ?>
 				</div>
+				<div class="swiper-button-next"></div>
 			</div>
 		</div>
 	</section>
@@ -223,9 +253,27 @@ if ($show_hedliter) {
 				</div>
 			</div>
 		</div>
+		<?php if (!empty($format_subtabs)): ?>
+			<div class="container">
+				<div class="cities-list_wrapper">
+					<ul class="cities-list is-tabs is-wide">
+						<?php foreach ($format_subtabs as $st): ?>
+							<li class="cities-list__item<?php echo $st['active'] ? ' active' : ''; ?>">
+								<?php if ($st['active']): ?>
+									<span><?php echo esc_html($st['name']); ?></span>
+								<?php else: ?>
+									<a href="<?php echo esc_url($st['url']); ?>"><?php echo esc_html($st['name']); ?></a>
+								<?php endif; ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+			</div>
+		<?php endif; ?>
 		<div class="container">
 			<div class="concert_list<?php echo $events_layout === 'list' ? ' concert_row' : ''; ?>">
 				<?php
+				$concert_modal_ids = [];
 				$ru_months_genitive = ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 				$ru_months_short    = ['', 'янв', 'февр', 'март', 'апр', 'мая', 'июня', 'июля', 'авг', 'сент', 'окт', 'нояб', 'дек'];
 				$ru_weekdays_short  = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
@@ -312,12 +360,17 @@ if ($show_hedliter) {
 								</div>
 							</div>
 						<?php endif; ?>
-						<?php if ($is_excursion): ?>
-							<?php get_template_part('template-parts/modals/event-info', null, ['event_id' => (int) $ev['id']]); ?>
-						<?php endif; ?>
+						<?php if ($is_excursion || $is_free_event): $concert_modal_ids[] = (int) $ev['id']; endif; ?>
 					<?php endforeach;
 				endforeach; ?>
 			</div>
+			<?php foreach ($concert_modal_ids as $modal_event_id): ?>
+				<?php if ($is_excursion): ?>
+					<?php get_template_part('template-parts/modals/event-info', null, ['event_id' => $modal_event_id]); ?>
+				<?php elseif ($is_free_event): ?>
+					<?php get_template_part('template-parts/modals/free-event-booking', null, ['event_id' => $modal_event_id]); ?>
+				<?php endif; ?>
+			<?php endforeach; ?>
 			<div class="concert_more">
 				<div class="btn_load_more"><span>Показать ещё</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="19" height="9" viewBox="0 0 19 9" fill="none">
@@ -333,7 +386,7 @@ if ($show_hedliter) {
 	</section>
 <?php endif; ?>
 
-<?php if ($term->description !== ''): ?>
+<?php if ($term->description !== '' && !$hide_bubbles): ?>
 <section class="event-format">
 	<div class="container">
 		<div class="event-format__content">
@@ -369,12 +422,14 @@ if ($show_hedliter) {
 	'title_override' => $term_videos_title !== '' ? $term_videos_title : '',
 ]); ?>
 
-<?php get_template_part('template-parts/blocks/comedians', null, [
-	'title_override'       => $term_comedians_title !== '' ? $term_comedians_title : $f_comedians_title,
-	'description_override' => $term_comedians_descr  !== '' ? $term_comedians_descr  : $f_comedians_description,
-	'show_cta'             => $show_comedians_cta,
-	'comedian_ids'         => $format_comedian_ids,
-]); ?>
+<?php if (!$hide_comedians): ?>
+	<?php get_template_part('template-parts/blocks/comedians', null, [
+		'title_override'       => $term_comedians_title !== '' ? $term_comedians_title : $f_comedians_title,
+		'description_override' => $term_comedians_descr  !== '' ? $term_comedians_descr  : $f_comedians_description,
+		'show_cta'             => $show_comedians_cta,
+		'comedian_ids'         => $format_comedian_ids,
+	]); ?>
+<?php endif; ?>
 
 <?php get_template_part('template-parts/blocks/subscribe'); ?>
 

@@ -1,15 +1,15 @@
 {
-    "key": "group_cooperation_page",
-    "title": "Поля страницы «Сотрудничество»",
+    "key": "group_offer_stage_page",
+    "title": "Поля страницы «Есть площадка»",
     "fields": [
         {
-            "key": "field_coop_hero_tab",
+            "key": "field_offerstage_hero_tab",
             "label": "Hero",
             "name": "",
             "type": "tab"
         },
         {
-            "key": "field_coop_hero_slides",
+            "key": "field_offerstage_hero_slides",
             "label": "Hero-слайдер",
             "name": "hero_slides",
             "type": "repeater",
@@ -17,7 +17,7 @@
             "button_label": "Добавить слайд",
             "sub_fields": [
                 {
-                    "key": "field_coop_hero_image_desktop",
+                    "key": "field_offerstage_hero_image_desktop",
                     "label": "Изображение (десктоп)",
                     "name": "image_desktop",
                     "type": "image",
@@ -25,7 +25,7 @@
                     "return_format": "id"
                 },
                 {
-                    "key": "field_coop_hero_image_mobile",
+                    "key": "field_offerstage_hero_image_mobile",
                     "label": "Изображение (мобайл)",
                     "name": "image_mobile",
                     "type": "image",
@@ -33,7 +33,7 @@
                     "return_format": "id"
                 },
                 {
-                    "key": "field_coop_hero_link",
+                    "key": "field_offerstage_hero_link",
                     "label": "Ссылка",
                     "name": "link",
                     "type": "url"
@@ -41,34 +41,34 @@
             ]
         },
         {
-            "key": "field_coop_tabs_section_tab",
-            "label": "Вкладки",
+            "key": "field_offerstage_about_tab",
+            "label": "О площадке",
             "name": "",
             "type": "tab"
         },
         {
-            "key": "field_coop_tabs_title",
+            "key": "field_offerstage_about_tabs_title",
             "label": "Заголовок секции",
-            "name": "cooperation_tabs_title",
+            "name": "about_tabs_title",
             "type": "text"
         },
         {
-            "key": "field_coop_tabs",
+            "key": "field_offerstage_about_tabs",
             "label": "Вкладки",
-            "name": "cooperation_tabs",
+            "name": "about_tabs",
             "type": "repeater",
             "layout": "block",
             "button_label": "Добавить вкладку",
             "sub_fields": [
                 {
-                    "key": "field_coop_tab_title",
+                    "key": "field_offerstage_tab_title",
                     "label": "Название вкладки",
                     "name": "tab_title",
                     "type": "text",
                     "required": 1
                 },
                 {
-                    "key": "field_coop_tab_description",
+                    "key": "field_offerstage_tab_description",
                     "label": "Описание",
                     "name": "description",
                     "type": "wysiwyg",
@@ -78,7 +78,7 @@
                     "toolbar": "basic"
                 },
                 {
-                    "key": "field_coop_tab_hide_bubbles",
+                    "key": "field_offerstage_tab_hide_bubbles",
                     "label": "Скрыть блок",
                     "name": "hide_bubbles",
                     "type": "true_false",
@@ -89,7 +89,7 @@
                     "default_value": 0
                 },
                 {
-                    "key": "field_coop_tab_bubbles",
+                    "key": "field_offerstage_tab_bubbles",
                     "label": "Бабблы",
                     "name": "bubbles",
                     "type": "repeater",
@@ -97,7 +97,7 @@
                     "button_label": "Добавить баббл",
                     "sub_fields": [
                         {
-                            "key": "field_coop_bubble_title",
+                            "key": "field_offerstage_bubble_title",
                             "label": "Значение",
                             "name": "bubble_title",
                             "type": "text",
@@ -105,7 +105,7 @@
                             "wrapper": {"width": "40"}
                         },
                         {
-                            "key": "field_coop_bubble_description",
+                            "key": "field_offerstage_bubble_description",
                             "label": "Описание",
                             "name": "bubble_description",
                             "type": "text",
@@ -117,61 +117,108 @@
             ]
         },
         {
-            "key": "field_coop_partners_tab",
-            "label": "Партнёры",
+            "key": "field_offerstage_stages_tab",
+            "label": "Наши площадки",
             "name": "",
             "type": "tab"
         },
         {
-            "key": "field_coop_partner_stages_title",
+            "key": "field_offerstage_stages_title",
             "label": "Заголовок секции",
-            "name": "partner_stages_title",
+            "name": "stages_title",
             "type": "text"
         },
         {
-            "key": "field_coop_partner_stages_description",
+            "key": "field_offerstage_stages_description",
             "label": "Описание секции",
-            "name": "partner_stages_description",
-            "type": "textarea",
-            "rows": 2
-        },
-        {
-            "key": "field_coop_partner_stages_link_label",
-            "label": "Подпись ссылки «все площадки»",
-            "name": "partner_stages_link_label",
+            "name": "stages_description",
             "type": "text"
         },
         {
-            "key": "field_coop_faq_tab",
+            "key": "field_offerstage_stages_cta_label",
+            "label": "Текст кнопки",
+            "name": "stages_cta_label",
+            "type": "text"
+        },
+        {
+            "key": "field_offerstage_stages",
+            "label": "Площадки",
+            "name": "stages",
+            "type": "relationship",
+            "post_type": ["stage"],
+            "filters": ["search"],
+            "return_format": "id"
+        },
+        {
+            "key": "field_offerstage_faq_tab",
             "label": "FAQ / форма",
             "name": "",
             "type": "tab"
         },
         {
-            "key": "field_coop_faq_title",
+            "key": "field_offerstage_faq_title",
             "label": "Заголовок секции",
             "name": "faq_title",
             "type": "text"
         },
         {
-            "key": "field_coop_faq_description",
+            "key": "field_offerstage_faq_description",
             "label": "Описание секции",
             "name": "faq_description",
             "type": "textarea",
             "rows": 3
         },
         {
-            "key": "field_coop_faq_form_title",
+            "key": "field_offerstage_faq_form_title",
             "label": "Заголовок карточки рядом с формой",
             "name": "faq_form_title",
             "type": "text"
         },
         {
-            "key": "field_coop_faq_form_description",
+            "key": "field_offerstage_faq_form_description",
             "label": "Описание карточки рядом с формой",
             "name": "faq_form_description",
             "type": "textarea",
             "rows": 3
+        },
+        {
+            "key": "field_offerstage_stats_tab",
+            "label": "Статистика",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_offerstage_stats_section_title",
+            "label": "Заголовок секции",
+            "name": "stats_section_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_offerstage_stats",
+            "label": "Числа",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_offerstage_stat_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_offerstage_stat_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "70"}
+                }
+            ]
         }
     ],
     "location": [
@@ -179,7 +226,7 @@
             {
                 "param": "page_template",
                 "operator": "==",
-                "value": "page-cooperation.php"
+                "value": "page-offer-stage.php"
             }
         ]
     ],
@@ -189,5 +236,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000310
+    "modified": 1900000312
 }

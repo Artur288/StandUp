@@ -194,6 +194,26 @@
             "bidirectional_target": []
         },
         {
+            "key": "field_format_hide_bubbles",
+            "label": "Скрыть блок",
+            "name": "hide_bubbles",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Не выводить блок бабблов",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
             "key": "field_format_bubbles",
             "label": "Бабблы",
             "name": "bubbles",
@@ -431,6 +451,134 @@
             "ui_off_text": "Нет",
             "default_value": 1,
             "message": ""
+        },
+        {
+            "key": "field_format_hide_comedians",
+            "label": "Скрыть комиков",
+            "name": "hide_comedians",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Если включено — блок «Наши комики» на странице этого формата не выводится",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_format_is_free_event",
+            "label": "Бесплатные мероприятия",
+            "name": "is_free_event",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Если включено — кнопка «Инфо» у событий этого формата открывает попап бесплатного мероприятия с бронированием мест вместо обычного попапа",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_format_default_18_plus",
+            "label": "18+ (по умолчанию)",
+            "name": "default_18_plus",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Используется, если у конкретного события не задано своё значение",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_format_default_duration",
+            "label": "Продолжительность (по умолчанию)",
+            "name": "default_duration",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Используется, если у конкретного события не задано своё значение",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "1,5–2 часа",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_format_default_has_mat",
+            "label": "Мат (по умолчанию)",
+            "name": "default_has_mat",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Используется, если у конкретного события не задано своё значение",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0,
+            "message": ""
+        },
+        {
+            "key": "field_format_free_event_important_info",
+            "label": "Важная информация (бесплатные мероприятия)",
+            "name": "free_event_important_info",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Текст для блока «Важная информация» в попапе бронирования (депозит, чаевые, рассадка и т.д.)",
+            "required": false,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_format_is_free_event",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "default_value": "",
+            "delay": 0
         }
     ],
     "location": [
@@ -452,5 +600,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1900000300
+    "modified": 1900000311
 }

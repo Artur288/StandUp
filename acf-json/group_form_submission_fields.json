@@ -11,7 +11,10 @@
                 "order_event": "Заказать мероприятие",
                 "cooperation": "Сотрудничество",
                 "corporate": "Корпоратив",
-                "perform": "Выступить"
+                "perform": "Выступить",
+                "stage": "Есть площадка",
+                "sponsor": "Спонсорство",
+                "free_event": "Бесплатное мероприятие"
             },
             "return_format": "value"
         },
@@ -69,6 +72,21 @@
                     }
                 ]
             ]
+        },
+        {
+            "key": "field_submission_guests",
+            "label": "Количество гостей",
+            "name": "guests",
+            "type": "text",
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_submission_form_type",
+                        "operator": "==",
+                        "value": "free_event"
+                    }
+                ]
+            ]
         }
     ],
     "location": [
@@ -86,5 +104,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000099
+    "modified": 1900000307
 }

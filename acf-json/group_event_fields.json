@@ -252,6 +252,78 @@
             "delay": 0
         },
         {
+            "key": "field_event_age_18_plus",
+            "label": "18+",
+            "name": "age_18_plus",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Для попапа бесплатного мероприятия и попапа экскурсии. Пусто — берётся значение по умолчанию из формата.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "": "Как у формата",
+                "yes": "Да",
+                "no": "Нет"
+            },
+            "return_format": "value",
+            "default_value": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0
+        },
+        {
+            "key": "field_event_duration",
+            "label": "Продолжительность",
+            "name": "duration",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Для попапа бесплатного мероприятия и попапа экскурсии. Пусто — берётся значение по умолчанию из формата.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "1,5–2 часа",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_event_has_mat",
+            "label": "Мат",
+            "name": "has_mat",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "Для попапа бесплатного мероприятия и попапа экскурсии. Пусто — берётся значение по умолчанию из формата.",
+            "required": false,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "": "Как у формата",
+                "yes": "Да",
+                "no": "Нет"
+            },
+            "return_format": "value",
+            "default_value": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "ajax": 0
+        },
+        {
             "key": "field_event_price_from",
             "label": "Цена от, руб.",
             "name": "price_from",
@@ -814,5 +886,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1781548164
+    "modified": 1783500000
 }

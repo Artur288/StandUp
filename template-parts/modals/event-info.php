@@ -20,6 +20,16 @@ $metro    = $stage_id ? (string) get_field('metro', $stage_id) : '';
 $address  = $stage_id ? (string) get_field('address', $stage_id) : '';
 $meta     = trim($metro . ($metro !== '' && $address !== '' ? ' / ' : '') . $address);
 
+$format_terms   = get_the_terms($event_id, 'format');
+$format_term_id = (!empty($format_terms) && !is_wp_error($format_terms)) ? (int) $format_terms[0]->term_id : 0;
+$duration       = standup_event_duration($event_id, $format_term_id);
+$is_18_plus     = standup_event_is_18_plus($event_id, $format_term_id);
+$has_mat        = standup_event_has_mat($event_id, $format_term_id);
+$info_bubbles   = [];
+if ($duration !== '') $info_bubbles[] = ['title' => $duration, 'descr' => 'продолжительность'];
+if ($is_18_plus)      $info_bubbles[] = ['title' => '18+', 'descr' => 'возрастное ограничение'];
+if ($has_mat)          $info_bubbles[] = ['title' => 'Мат', 'descr' => 'может присутствовать'];
+
 $date_label = '';
 if (preg_match('~^(\d{4})(\d{2})(\d{2})$~', $ymd, $m)) {
 	$date_label = (int) $m[3] . ' ' . (STANDUP_RU_MONTHS_GENITIVE[(int) $m[2]] ?? '');
@@ -43,6 +53,17 @@ if (preg_match('~^(\d{4})(\d{2})(\d{2})$~', $ymd, $m)) {
 				<div class="stage_info_modal__meta"><?php echo esc_html($meta); ?></div>
 			<?php endif; ?>
 		</div>
+
+		<?php if (!empty($info_bubbles)): ?>
+			<div class="info_list">
+				<?php foreach ($info_bubbles as $bubble): ?>
+					<div class="item">
+						<div class="title_block"><?php echo esc_html($bubble['title']); ?></div>
+						<div class="description_block"><?php echo esc_html($bubble['descr']); ?></div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
 
 		<?php if (!empty($gallery)): ?>
 			<div class="stage_info_modal__gallery">

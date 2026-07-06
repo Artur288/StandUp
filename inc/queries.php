@@ -31,6 +31,58 @@ function standup_schedule_min_time_key(array $schedule): string {
 	return $keys ? min($keys) : '9999';
 }
 
+// "HH:MM" минус N минут → "HH:MM" (для «сбор гостей за полчаса до начала»)
+function standup_time_minus_minutes(string $time, int $minutes): string {
+	if (!preg_match('~^\s*(\d{1,2})[:.](\d{2})~', $time, $m)) {
+		return '';
+	}
+	$ts = mktime((int) $m[1], (int) $m[2], 0) - $minutes * 60;
+	return date('H:i', $ts);
+}
+
+// возрастное ограничение события: своё значение или дефолт формата
+function standup_event_is_18_plus(int $event_id, int $format_term_id): bool {
+	$override = (string) get_field('age_18_plus', $event_id);
+	if ($override === 'yes') return true;
+	if ($override === 'no') return false;
+	return $format_term_id ? (bool) get_field('default_18_plus', 'format_' . $format_term_id) : false;
+}
+
+// наличие мата на событии: своё значение или дефолт формата
+function standup_event_has_mat(int $event_id, int $format_term_id): bool {
+	$override = (string) get_field('has_mat', $event_id);
+	if ($override === 'yes') return true;
+	if ($override === 'no') return false;
+	return $format_term_id ? (bool) get_field('default_has_mat', 'format_' . $format_term_id) : false;
+}
+
+// продолжительность события: своё значение или дефолт формата
+function standup_event_duration(int $event_id, int $format_term_id): string {
+	$own = (string) get_field('duration', $event_id);
+	if ($own !== '') return $own;
+	return $format_term_id ? (string) get_field('default_duration', 'format_' . $format_term_id) : '';
+}
+
+// шапка попапов бесплатного мероприятия: «10.09 20:00 / сбор гостей в 19:30 / 18+»
+function standup_free_event_header(int $event_id, int $format_term_id): string {
+	$event_date = (string) get_field('event_date', $event_id);
+	$schedule   = get_field('schedule', $event_id) ?: [];
+	usort($schedule, fn($a, $b) => strcmp(
+		standup_time_sort_key((string) ($a['time'] ?? '')),
+		standup_time_sort_key((string) ($b['time'] ?? ''))
+	));
+	$first_time = (string) ($schedule[0]['time'] ?? '');
+	$gathering  = $first_time !== '' ? standup_time_minus_minutes($first_time, 30) : '';
+
+	$parts = [];
+	if (strlen($event_date) === 8) {
+		$parts[] = substr($event_date, 6, 2) . '.' . substr($event_date, 4, 2) . ($first_time !== '' ? ' ' . $first_time : '');
+	}
+	if ($gathering !== '') $parts[] = 'сбор гостей в ' . $gathering;
+	if (standup_event_is_18_plus($event_id, $format_term_id)) $parts[] = '18+';
+	return implode(' / ', $parts);
+}
+
 // текущий объект для get_field: ID поста, term-строка или null (на post_type_archive контекста нет)
 function standup_current_acf_object_id() {
 	if (is_singular()) return get_the_ID();

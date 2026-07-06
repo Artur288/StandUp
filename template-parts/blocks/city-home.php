@@ -177,7 +177,7 @@ $city_map = standup_get_city_home_map();
 								<div class="swiper-slide">
 									<div class="stat_item">
 										<div class="number"><?php echo esc_html($stat['number'] ?? ''); ?></div>
-										<div class="info"><?php echo esc_html($stat['label'] ?? ''); ?></div>
+										<div class="info"><?php echo wp_kses_post($stat['label'] ?? ''); ?></div>
 									</div>
 								</div>
 							<?php endforeach; ?>

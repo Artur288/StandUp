@@ -117,6 +117,17 @@
                     "toolbar": "basic"
                 },
                 {
+                    "key": "field_about_tab_hide_bubbles",
+                    "label": "Скрыть блок",
+                    "name": "hide_bubbles",
+                    "type": "true_false",
+                    "instructions": "Не выводить блок бабблов для этой вкладки",
+                    "ui": 1,
+                    "ui_on_text": "Да",
+                    "ui_off_text": "Нет",
+                    "default_value": 0
+                },
+                {
                     "key": "field_about_tab_bubbles",
                     "label": "Бабблы",
                     "name": "bubbles",
@@ -226,48 +237,26 @@
             ]
         },
         {
-            "key": "field_about_team_tab",
-            "label": "Команда",
+            "key": "field_about_gallery_tab",
+            "label": "Галерея",
             "name": "",
             "type": "tab"
         },
         {
-            "key": "field_about_team_title",
+            "key": "field_about_gallery_title",
             "label": "Заголовок секции",
-            "name": "team_title",
+            "name": "gallery_title",
             "type": "text"
         },
         {
-            "key": "field_about_team",
-            "label": "Команда",
-            "name": "team",
-            "type": "repeater",
-            "layout": "block",
-            "button_label": "Добавить участника",
-            "sub_fields": [
-                {
-                    "key": "field_about_team_name",
-                    "label": "Имя",
-                    "name": "name",
-                    "type": "text",
-                    "required": 1
-                },
-                {
-                    "key": "field_about_team_role",
-                    "label": "Должность",
-                    "name": "role",
-                    "type": "text",
-                    "required": 1
-                },
-                {
-                    "key": "field_about_team_photo",
-                    "label": "Фото",
-                    "name": "photo",
-                    "type": "image",
-                    "required": 1,
-                    "return_format": "id"
-                }
-            ]
+            "key": "field_about_gallery",
+            "label": "Фото",
+            "name": "gallery",
+            "type": "gallery",
+            "return_format": "id",
+            "preview_size": "medium",
+            "insert": "append",
+            "library": "all"
         },
         {
             "key": "field_about_faq_tab",
@@ -317,5 +306,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000099
+    "modified": 1900000314
 }

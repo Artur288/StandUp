@@ -1,0 +1,240 @@
+{
+    "key": "group_perform_page",
+    "title": "Поля страницы «Выступать у нас»",
+    "fields": [
+        {
+            "key": "field_perform_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "sub_fields": [
+                {
+                    "key": "field_perform_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_perform_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_perform_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_perform_steps_tab",
+            "label": "Шаги",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_steps_title",
+            "label": "Заголовок секции",
+            "name": "steps_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_perform_steps",
+            "label": "Шаги",
+            "name": "steps",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить шаг",
+            "sub_fields": [
+                {
+                    "key": "field_perform_step_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_perform_step_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "70"}
+                }
+            ]
+        },
+        {
+            "key": "field_perform_contacts_tab",
+            "label": "Контакты",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_contacts_title",
+            "label": "Заголовок секции",
+            "name": "contacts_title",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_contacts_description",
+            "label": "Описание секции",
+            "name": "contacts_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_perform_comedians_tab",
+            "label": "Наши комики",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_comedians_title",
+            "label": "Заголовок секции",
+            "name": "comedians_title",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_comedians_description",
+            "label": "Описание секции",
+            "name": "comedians_description",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_stages_tab",
+            "label": "Наши площадки",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_stages_title",
+            "label": "Заголовок секции",
+            "name": "stages_title",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_stages_description",
+            "label": "Описание секции",
+            "name": "stages_description",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_stages_cta_label",
+            "label": "Текст кнопки",
+            "name": "stages_cta_label",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_stages",
+            "label": "Площадки",
+            "name": "stages",
+            "type": "relationship",
+            "post_type": ["stage"],
+            "filters": ["search"],
+            "return_format": "id"
+        },
+        {
+            "key": "field_perform_faq_tab",
+            "label": "FAQ / форма",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_faq_title",
+            "label": "Заголовок секции",
+            "name": "faq_title",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_faq_description",
+            "label": "Описание секции",
+            "name": "faq_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_perform_faq_form_title",
+            "label": "Заголовок карточки рядом с формой",
+            "name": "faq_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_perform_faq_form_description",
+            "label": "Описание карточки рядом с формой",
+            "name": "faq_form_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_perform_stats_tab",
+            "label": "Статистика",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_perform_stats_section_title",
+            "label": "Заголовок секции",
+            "name": "stats_section_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_perform_stats",
+            "label": "Числа",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить",
+            "sub_fields": [
+                {
+                    "key": "field_perform_stat_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_perform_stat_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "70"}
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-perform.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000303
+}

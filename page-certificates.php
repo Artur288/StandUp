@@ -8,6 +8,7 @@ $hero_slides              = get_field('hero_slides') ?: [];
 $certificate_title        = (string) get_field('certificate_title');
 $certificate_description  = (string) get_field('certificate_description');
 $bubbles                  = get_field('bubbles') ?: [];
+$hide_bubbles             = (bool) get_field('hide_bubbles');
 $purchase_label           = (string) get_field('purchase_label');
 $purchase_url             = (string) get_field('purchase_url');
 $how_it_works_title       = (string) get_field('how_it_works_title');
@@ -45,6 +46,7 @@ $stats                    = get_field('stats') ?: [];
 	</section>
 <?php endif; ?>
 
+<?php if (!$hide_bubbles): ?>
 <section class="event-format">
 	<div class="container">
 		<div class="event-format__content">
@@ -75,6 +77,7 @@ $stats                    = get_field('stats') ?: [];
 		</div>
 	</div>
 </section>
+<?php endif; ?>
 
 <?php if ($how_it_works_title !== '' || $how_it_works_description !== ''): ?>
 	<section class="event-format">
@@ -111,7 +114,7 @@ $stats                    = get_field('stats') ?: [];
 								<div class="swiper-slide">
 									<div class="stat_item">
 										<div class="number"><?php echo esc_html($stat['number'] ?? ''); ?></div>
-										<div class="info"><?php echo esc_html($stat['label'] ?? ''); ?></div>
+										<div class="info"><?php echo wp_kses_post($stat['label'] ?? ''); ?></div>
 									</div>
 								</div>
 							<?php endforeach; ?>

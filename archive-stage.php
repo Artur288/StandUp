@@ -73,9 +73,10 @@ $all_stages = get_posts([
 				</div>
 			<?php endif; ?>
 			<div class="stages_list">
-				<?php foreach ($all_stages as $stage):
+				<?php $rendered_stage_ids = []; foreach ($all_stages as $stage):
 					$stage_cities = get_the_terms($stage->ID, 'city');
 					if (empty($stage_cities) || is_wp_error($stage_cities)) continue;
+					$rendered_stage_ids[] = $stage->ID;
 					$city_slugs = implode(',', wp_list_pluck($stage_cities, 'slug'));
 
 					$thumb_id    = get_post_thumbnail_id($stage->ID);
@@ -116,9 +117,11 @@ $all_stages = get_posts([
 							<a href="#" class="btn btn_map js-stage-info-open" data-target="stageInfoModal-<?php echo $stage->ID; ?>"><span>Инфо</span></a>
 						</div>
 					</div>
-					<?php get_template_part('template-parts/modals/stage-info', null, ['stage_id' => $stage->ID]); ?>
 				<?php endforeach; ?>
 			</div>
+			<?php foreach ($rendered_stage_ids as $stage_id): ?>
+				<?php get_template_part('template-parts/modals/stage-info', null, ['stage_id' => $stage_id]); ?>
+			<?php endforeach; ?>
 		</div>
 	</section>
 <?php endif; ?>

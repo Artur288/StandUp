@@ -5,6 +5,9 @@ const STANDUP_FORM_TYPES = [
 	'cooperation' => 'Сотрудничество',
 	'corporate'   => 'Корпоратив',
 	'perform'     => 'Выступить',
+	'stage'       => 'Есть площадка',
+	'sponsor'     => 'Спонсорство',
+	'free_event'  => 'Бесплатное мероприятие',
 ];
 
 add_action('wp_ajax_about_faq_send', 'standup_ajax_about_faq');
@@ -21,6 +24,7 @@ function standup_ajax_about_faq(): void {
 	$phone   = sanitize_text_field(wp_unslash($_POST['phone'] ?? ''));
 	$email   = sanitize_email(wp_unslash($_POST['email'] ?? ''));
 	$message = sanitize_textarea_field(wp_unslash($_POST['message'] ?? ''));
+	$guests  = sanitize_text_field(wp_unslash($_POST['guests'] ?? ''));
 
 	if ($name === '' || ($phone === '' && $email === '')) {
 		wp_send_json_error(['message' => 'Заполните обязательные поля']);
@@ -35,12 +39,13 @@ function standup_ajax_about_faq(): void {
 		'phone'     => $phone,
 		'email'     => $email,
 		'message'   => $message,
+		'guests'    => $guests,
 	]);
 	if (!$post_id) {
 		wp_send_json_error(['message' => 'Не удалось сохранить заявку']);
 	}
 
-	standup_send_form_email($form_type, compact('name', 'phone', 'email', 'message'));
+	standup_send_form_email($form_type, compact('name', 'phone', 'email', 'message', 'guests'));
 
 	wp_send_json_success();
 }
@@ -100,7 +105,7 @@ function standup_create_form_submission(array $data): int {
 	if (!function_exists('update_field')) {
 		return (int) $post_id;
 	}
-	$keys = ['form_type', 'name', 'phone', 'email', 'message', 'event_date', 'event_format'];
+	$keys = ['form_type', 'name', 'phone', 'email', 'message', 'event_date', 'event_format', 'guests'];
 	foreach ($keys as $key) {
 		if (!empty($data[$key])) {
 			update_field($key, $data[$key], $post_id);
@@ -129,6 +134,7 @@ function standup_send_form_email(string $form_type, array $data): void {
 	];
 	if (!empty($data['event_date']))   $lines[] = 'Дата мероприятия: ' . $data['event_date'];
 	if (!empty($data['event_format'])) $lines[] = 'Формат: ' . $data['event_format'];
+	if (!empty($data['guests']))       $lines[] = 'Количество гостей: ' . $data['guests'];
 	if (!empty($data['message']))      $lines[] = '' . "\nСообщение:\n" . $data['message'];
 
 	wp_mail($admin_email, $subject, implode("\n", $lines));

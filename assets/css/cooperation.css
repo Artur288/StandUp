@@ -12,8 +12,6 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   align-items: center;
 }
 .concert .cities-list {
-  flex-grow: 1;
-  justify-content: space-between;
   padding-left: 32px;
   padding-right: 32px;
   white-space: nowrap;

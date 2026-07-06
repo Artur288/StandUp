@@ -26,7 +26,7 @@ add_action('wp_enqueue_scripts', function () {
 	wp_enqueue_script('standup-stage-info', get_theme_file_uri('assets/js/stage-info-popup.js'), ['standup-main', 'standup-swiper'], $ver, true);
 
 	// постранично подключаем CSS и JS из мокапа
-	if (is_page_template('page-about.php') || is_singular( 'event' )) {
+	if (is_page_template('page-about.php') || is_page_template('page-sponsor.php') || is_page_template('page-perform.php') || is_page_template('page-offer-stage.php') || is_singular( 'event' )) {
 		wp_enqueue_style('standup-about', get_theme_file_uri('assets/css/about.css'), ['standup-style'], $ver);
 	} elseif (is_page_template('page-certificates.php')) {
 		wp_enqueue_style('standup-cert', get_theme_file_uri('assets/css/cert.css'), ['standup-style'], $ver);
@@ -37,7 +37,7 @@ add_action('wp_enqueue_scripts', function () {
 	}
 
 	// about.js — табы и swiper, нужен на about + cooperation (та же разметка .about_description)
-	if (is_page_template('page-about.php') || is_page_template('page-cooperation.php') || is_singular( 'event' )) {
+	if (is_page_template('page-about.php') || is_page_template('page-sponsor.php') || is_page_template('page-perform.php') || is_page_template('page-offer-stage.php') || is_page_template('page-cooperation.php') || is_singular( 'event' )) {
 		wp_enqueue_script('standup-about', get_theme_file_uri('assets/js/about.js'), ['jquery', 'standup-main', 'standup-swiper'], $ver, true);
 	}
 

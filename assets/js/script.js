@@ -176,14 +176,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const videoSwiper = document.querySelector('.video_swiper');
-  if (videoSwiper) {
-    new Swiper('.video_swiper', {
+  document.querySelectorAll('.video_swiper').forEach(function (el) {
+    new Swiper(el, {
       slidesPerView: 2.5,
       spaceBetween: 20,
       loop: true,
       navigation: {
-        nextEl: '.swiper-button-next',
+        nextEl: el.querySelector('.swiper-button-next'),
       },
       breakpoints: {
         768: {
@@ -197,12 +196,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  }
+  });
 
-  const statsSwiper = document.querySelector('.statistics_swiper');
-
-  if (statsSwiper) {
-    new Swiper('.statistics_swiper', {
+  document.querySelectorAll('.statistics_swiper').forEach(function (el) {
+    new Swiper(el, {
       spaceBetween: 20,
       loop: true,
       slidesPerView: 1,
@@ -231,20 +228,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
-  }
+  });
 
 
   const categorySwiper = document.querySelector('.category_swiper');
 
   if (categorySwiper) {
 
-    new Swiper('.category_swiper', {
+    new Swiper(categorySwiper, {
       slidesPerView: 4,
       spaceBetween: 20,
       loop: false,
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: categorySwiper.querySelector('.swiper-button-next'),
+        prevEl: categorySwiper.querySelector('.swiper-button-prev'),
       },
       breakpoints: {
         1200: { slidesPerView: 4 },
@@ -283,12 +280,12 @@ document.addEventListener('DOMContentLoaded', () => {
       grabCursor: true,
 
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: comic_list_current_month.querySelector('.swiper-button-next'),
+        prevEl: comic_list_current_month.querySelector('.swiper-button-prev'),
       },
 
       pagination: {
-        el: '.swiper-pagination',
+        el: comic_list_current_month.querySelector('.swiper-pagination'),
         clickable: true,
       },
 
@@ -334,12 +331,12 @@ document.addEventListener('DOMContentLoaded', () => {
       grabCursor: true,
 
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
+        nextEl: list_hedliter.querySelector('.swiper-button-next'),
+        prevEl: list_hedliter.querySelector('.swiper-button-prev'),
       },
 
       pagination: {
-        el: '.swiper-pagination',
+        el: list_hedliter.querySelector('.swiper-pagination'),
         clickable: true,
       },
 
@@ -348,20 +345,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //скрытый текст
-const buttonHideText = document.querySelector('.btn_readmore.event-format__link');
+  document.querySelectorAll('.btn_readmore.event-format__link').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const wrap = this.closest('.event-format__left') || this.parentElement;
+      const text = wrap ? wrap.querySelector('.event-format__text') : null;
+      if (!text) return;
+      const openText = this.querySelector('.open');
+      const closeText = this.querySelector('.close');
 
-if (buttonHideText) {
-  buttonHideText.addEventListener('click', function () {
-    const text = document.querySelector('.event-format__text');
-    if (!text) return;
-    const openText = this.querySelector('.open');
-    const closeText = this.querySelector('.close');
-
-    text.classList.toggle('active');
-    openText.classList.toggle('active');
-    closeText.classList.toggle('active');
+      text.classList.toggle('active');
+      if (openText) openText.classList.toggle('active');
+      if (closeText) closeText.classList.toggle('active');
+    });
   });
-}
 
   const holidayFormat = document.querySelector('.corporate-holiday-format');
   if (holidayFormat) {

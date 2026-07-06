@@ -60,6 +60,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // «Бронировать» в попапе бесплатного мероприятия — закрываем этот попап, открываем попап бронирования
+  document.addEventListener('click', function (e) {
+    const bookBtn = e.target.closest('.js-free-event-book');
+    if (!bookBtn) return;
+
+    modal.classList.remove('active');
+    body.classList.remove('overflow_active');
+
+    const bookingModal = document.getElementById(bookBtn.dataset.target);
+    if (bookingModal) {
+      bookingModal.classList.add('active');
+      bookingModal.setAttribute('aria-hidden', 'false');
+      body.classList.add('overflow_active');
+      html.classList.add('overflow_active');
+    }
+  });
+
   function initEventComicsSwiper() {
     const slider = document.querySelector('.event_comics_list');
 

@@ -1,28 +1,42 @@
 <?php
 /*
-Template Name: О нас
+Template Name: Есть площадка
 */
 get_header();
 
-$hero_slides         = get_field('hero_slides') ?: [];
+$hero_slides = get_field('hero_slides') ?: [];
+
+$about_tabs_title = (string) get_field('about_tabs_title');
+$about_tabs        = get_field('about_tabs') ?: [];
+
+$stages_title       = (string) get_field('stages_title');
+$stages_description = (string) get_field('stages_description');
+$stages_cta_label   = (string) get_field('stages_cta_label');
+$stage_ids          = get_field('stages') ?: [];
+
+$faq_title            = (string) get_field('faq_title');
+$faq_description       = (string) get_field('faq_description');
+$faq_form_title        = (string) get_field('faq_form_title');
+$faq_form_description  = (string) get_field('faq_form_description');
+
 $stats_section_title = (string) get_field('stats_section_title');
 $stats               = get_field('stats') ?: [];
-$about_tabs_title    = (string) get_field('about_tabs_title');
-$about_tabs          = get_field('about_tabs') ?: [];
-$extra_stats_title   = (string) get_field('extra_stats_title');
-$extra_stats         = get_field('extra_stats') ?: [];
-$photo_text_title    = (string) get_field('photo_text_title');
-$photo_text_rows     = get_field('photo_text_rows') ?: [];
-$gallery_title       = (string) get_field('gallery_title');
-$gallery_photos      = get_field('gallery') ?: [];
-$faq_title           = (string) get_field('faq_title');
-$faq_description     = (string) get_field('faq_description');
-$faq_form_title      = (string) get_field('faq_form_title');
-$faq_form_description = (string) get_field('faq_form_description');
 
 $opt_phone     = (string) get_field('phone', 'option');
 $opt_email     = (string) get_field('email', 'option');
 $opt_telegram  = (string) get_field('telegram_url', 'option');
+
+$stages = [];
+if (!empty($stage_ids)) {
+	$stages = get_posts([
+		'post_type'      => 'stage',
+		'post__in'       => $stage_ids,
+		'orderby'        => 'post__in',
+		'posts_per_page' => -1,
+		'post_status'    => 'publish',
+	]);
+}
+$stages_archive_url = get_post_type_archive_link('stage');
 ?>
 
 <?php if (!empty($hero_slides)): ?>
@@ -54,34 +68,8 @@ $opt_telegram  = (string) get_field('telegram_url', 'option');
 	</section>
 <?php endif; ?>
 
-<?php if (!empty($stats) || $stats_section_title !== ''): ?>
-	<section class="statistics">
-		<div class="container">
-			<?php if ($stats_section_title !== ''): ?>
-				<h2><?php echo nl2br(esc_html($stats_section_title)); ?></h2>
-			<?php endif; ?>
-			<?php if (!empty($stats)): ?>
-				<div class="statistics_list">
-					<div class="swiper statistics_swiper">
-						<div class="swiper-wrapper">
-							<?php foreach ($stats as $stat): ?>
-								<div class="swiper-slide">
-									<div class="stat_item">
-										<div class="number"><?php echo esc_html($stat['number'] ?? ''); ?></div>
-										<div class="info"><?php echo wp_kses_post($stat['label'] ?? ''); ?></div>
-									</div>
-								</div>
-							<?php endforeach; ?>
-						</div>
-					</div>
-				</div>
-			<?php endif; ?>
-		</div>
-	</section>
-<?php endif; ?>
-
 <?php if (!empty($about_tabs)): ?>
-	<section class="concert about_description">
+	<section class="concert about_description offer_description">
 		<div class="top">
 			<div class="container">
 				<div class="row1">
@@ -112,7 +100,7 @@ $opt_telegram  = (string) get_field('telegram_url', 'option');
 							<div class="event-format__content">
 								<div class="event-format__left">
 									<?php if ($tab_title !== ''): ?>
-										<h3 class="event-format__title"><?php echo esc_html($tab_title); ?></h3>
+										<h2 class="event-format__title"><?php echo esc_html($tab_title); ?></h2>
 									<?php endif; ?>
 									<?php if ($tab_descr !== ''): ?>
 										<div class="event-format__text active"><?php echo $tab_descr; ?></div>
@@ -138,83 +126,44 @@ $opt_telegram  = (string) get_field('telegram_url', 'option');
 	</section>
 <?php endif; ?>
 
-<?php if (!empty($extra_stats) || $extra_stats_title !== ''): ?>
-	<section class="about_stats">
+<?php if (!empty($stages) || $stages_title !== ''): ?>
+	<section class="comic_list about_team offer_list">
 		<div class="container">
-			<?php if ($extra_stats_title !== ''): ?>
-				<h2><?php echo esc_html($extra_stats_title); ?></h2>
+			<?php if ($stages_title !== ''): ?>
+				<h2><?php echo esc_html($stages_title); ?></h2>
 			<?php endif; ?>
-			<?php if (!empty($extra_stats)): ?>
-				<div class="about_stats__list">
-					<?php foreach ($extra_stats as $stat): ?>
-						<div class="about_stats__item">
-							<div class="number"><?php echo esc_html($stat['number'] ?? ''); ?></div>
-							<div class="info"><?php echo esc_html($stat['info'] ?? ''); ?></div>
+			<div class="top">
+				<?php if ($stages_description !== ''): ?>
+					<div class="desription_title"><?php echo wp_kses_post($stages_description); ?></div>
+				<?php endif; ?>
+				<?php if ($stages_cta_label !== '' && $stages_archive_url): ?>
+					<div class="btn"><a href="<?php echo esc_url($stages_archive_url); ?>" class="btn_all_commic"><?php echo esc_html($stages_cta_label); ?></a></div>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="container">
+			<div class="swiper about_team_swiper preform-slider">
+				<div class="swiper-wrapper">
+					<?php foreach ($stages as $stage): ?>
+						<div class="swiper-slide">
+							<div class="about_team__card">
+								<div class="about_team__thumb">
+									<?php echo get_the_post_thumbnail($stage, 'medium', ['alt' => $stage->post_title]); ?>
+								</div>
+								<div class="about_team_content">
+									<div class="about_team__name"><?php echo esc_html($stage->post_title); ?></div>
+									<div class="about_team__role"><?php echo esc_html((string) get_field('metro', $stage->ID)); ?></div>
+								</div>
+							</div>
 						</div>
 					<?php endforeach; ?>
 				</div>
-			<?php endif; ?>
-		</div>
-	</section>
-<?php endif; ?>
-
-<?php if (!empty($photo_text_rows) || $photo_text_title !== ''): ?>
-	<section class="about_photo_text">
-		<div class="container">
-			<?php if ($photo_text_title !== ''): ?>
-				<h2><?php echo esc_html($photo_text_title); ?></h2>
-			<?php endif; ?>
-			<?php foreach ($photo_text_rows as $i => $row):
-				$image_id = (int) ($row['image'] ?? 0);
-				$reverse = $i % 2 === 1;
-				?>
-				<div class="about_photo_text__row<?php echo $reverse ? ' reverse' : ''; ?>">
-					<div class="about_photo_text__image">
-						<?php if ($image_id): ?>
-							<?php echo wp_get_attachment_image($image_id, 'large', false, ['alt' => $row['title'] ?? '']); ?>
-						<?php endif; ?>
-					</div>
-					<div class="about_photo_text__info">
-						<?php if (!empty($row['title'])): ?>
-							<h3><?php echo nl2br(esc_html($row['title'])); ?></h3>
-						<?php endif; ?>
-						<?php if (!empty($row['description'])): ?>
-							<p><?php echo esc_html($row['description']); ?></p>
-						<?php endif; ?>
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
-	</section>
-<?php endif; ?>
-
-<?php if (!empty($gallery_photos) || $gallery_title !== ''): ?>
-	<section class="video_concert_list">
-		<div class="container">
-			<?php if ($gallery_title !== ''): ?>
-				<h2><?php echo esc_html($gallery_title); ?></h2>
-			<?php endif; ?>
-		</div>
-		<?php if (!empty($gallery_photos)): ?>
-			<div class="container container_swiper">
-				<div class="swiper video_swiper">
-					<div class="swiper-edge swiper-edge--left"></div>
-					<div class="swiper-edge swiper-edge--right"></div>
-					<div class="swiper-wrapper">
-						<?php foreach ($gallery_photos as $photo_id): ?>
-							<div class="swiper-slide">
-								<div class="video_card">
-									<?php echo wp_get_attachment_image((int) $photo_id, 'large'); ?>
-								</div>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					<div class="swiper-button-next"></div>
-				</div>
 			</div>
-		<?php endif; ?>
+		</div>
 	</section>
 <?php endif; ?>
+
+<?php get_template_part('template-parts/blocks/comedians'); ?>
 
 <section class="about_faq">
 	<div class="container">
@@ -259,15 +208,39 @@ $opt_telegram  = (string) get_field('telegram_url', 'option');
 				</div>
 			</div>
 			<div class="about_faq__right">
-				<?php get_template_part('template-parts/forms/faq', null, ['form_type' => 'perform']); ?>
+				<?php get_template_part('template-parts/forms/faq', null, ['form_type' => 'stage']); ?>
 			</div>
 		</div>
 	</div>
 </section>
 
-<?php get_template_part('template-parts/blocks/comedians'); ?>
-
 <?php get_template_part('template-parts/blocks/videos'); ?>
+
+<?php if (!empty($stats) || $stats_section_title !== ''): ?>
+	<section class="statistics">
+		<div class="container">
+			<?php if ($stats_section_title !== ''): ?>
+				<h2><?php echo nl2br(esc_html($stats_section_title)); ?></h2>
+			<?php endif; ?>
+			<?php if (!empty($stats)): ?>
+				<div class="statistics_list">
+					<div class="swiper statistics_swiper">
+						<div class="swiper-wrapper">
+							<?php foreach ($stats as $stat): ?>
+								<div class="swiper-slide">
+									<div class="stat_item">
+										<div class="number"><?php echo esc_html($stat['number'] ?? ''); ?></div>
+										<div class="info"><?php echo wp_kses_post($stat['label'] ?? ''); ?></div>
+									</div>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				</div>
+			<?php endif; ?>
+		</div>
+	</section>
+<?php endif; ?>
 
 <?php get_template_part('template-parts/blocks/formats'); ?>
 

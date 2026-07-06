@@ -1,0 +1,230 @@
+{
+    "key": "group_sponsor_page",
+    "title": "Поля страницы «Стать спонсором»",
+    "fields": [
+        {
+            "key": "field_sponsor_hero_tab",
+            "label": "Hero",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sponsor_hero_slides",
+            "label": "Hero-слайдер",
+            "name": "hero_slides",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить слайд",
+            "sub_fields": [
+                {
+                    "key": "field_sponsor_hero_image_desktop",
+                    "label": "Изображение (десктоп)",
+                    "name": "image_desktop",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_sponsor_hero_image_mobile",
+                    "label": "Изображение (мобайл)",
+                    "name": "image_mobile",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                },
+                {
+                    "key": "field_sponsor_hero_link",
+                    "label": "Ссылка",
+                    "name": "link",
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_sponsor_top_stats_tab",
+            "label": "Статистика (верх)",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sponsor_stats_section_title",
+            "label": "Заголовок секции",
+            "name": "stats_section_title",
+            "type": "textarea",
+            "rows": 2
+        },
+        {
+            "key": "field_sponsor_stats",
+            "label": "Числа",
+            "name": "stats",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить",
+            "min": 0,
+            "max": 3,
+            "sub_fields": [
+                {
+                    "key": "field_sponsor_stat_number",
+                    "label": "Число",
+                    "name": "number",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_sponsor_stat_label",
+                    "label": "Подпись",
+                    "name": "label",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "70"}
+                }
+            ]
+        },
+        {
+            "key": "field_sponsor_tabs_section_tab",
+            "label": "Описание",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sponsor_tabs_title",
+            "label": "Заголовок секции",
+            "name": "about_tabs_title",
+            "type": "text"
+        },
+        {
+            "key": "field_sponsor_tab_description",
+            "label": "Описание",
+            "name": "description",
+            "type": "wysiwyg",
+            "required": 1,
+            "media_upload": 0,
+            "tabs": "visual",
+            "toolbar": "basic"
+        },
+        {
+            "key": "field_sponsor_hide_bubbles",
+            "label": "Скрыть блок",
+            "name": "hide_bubbles",
+            "type": "true_false",
+            "instructions": "Не выводить блок бабблов",
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0
+        },
+        {
+            "key": "field_sponsor_tab_bubbles",
+            "label": "Бабблы",
+            "name": "bubbles",
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Добавить баббл",
+            "sub_fields": [
+                {
+                    "key": "field_sponsor_bubble_title",
+                    "label": "Значение",
+                    "name": "bubble_title",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "40"}
+                },
+                {
+                    "key": "field_sponsor_bubble_description",
+                    "label": "Описание",
+                    "name": "bubble_description",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {"width": "60"}
+                }
+            ]
+        },
+        {
+            "key": "field_sponsor_photo_text_tab",
+            "label": "Фото + текст",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sponsor_photo_text_title",
+            "label": "Заголовок секции",
+            "name": "photo_text_title",
+            "type": "text"
+        },
+        {
+            "key": "field_sponsor_photo_text_rows",
+            "label": "Блоки",
+            "name": "photo_text_rows",
+            "type": "repeater",
+            "layout": "block",
+            "button_label": "Добавить блок",
+            "sub_fields": [
+                {
+                    "key": "field_sponsor_pt_description",
+                    "label": "Описание",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 3,
+                    "required": 1
+                },
+                {
+                    "key": "field_sponsor_pt_image",
+                    "label": "Изображение",
+                    "name": "image",
+                    "type": "image",
+                    "required": 1,
+                    "return_format": "id"
+                }
+            ]
+        },
+        {
+            "key": "field_sponsor_faq_tab",
+            "label": "FAQ / форма",
+            "name": "",
+            "type": "tab"
+        },
+        {
+            "key": "field_sponsor_faq_title",
+            "label": "Заголовок секции",
+            "name": "faq_title",
+            "type": "text"
+        },
+        {
+            "key": "field_sponsor_faq_description",
+            "label": "Описание секции",
+            "name": "faq_description",
+            "type": "textarea",
+            "rows": 3
+        },
+        {
+            "key": "field_sponsor_faq_form_title",
+            "label": "Заголовок карточки рядом с формой",
+            "name": "faq_form_title",
+            "type": "text"
+        },
+        {
+            "key": "field_sponsor_faq_form_description",
+            "label": "Описание карточки рядом с формой",
+            "name": "faq_form_description",
+            "type": "textarea",
+            "rows": 3
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-sponsor.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "active": true,
+    "modified": 1900000313
+}
