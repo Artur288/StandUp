@@ -213,13 +213,6 @@ header .container .site-nav .sub-menu {
   z-index: 1000;
   max-width: 326px;
 }
-@media(min-width: 1280px) {
-  header .container .site-nav .sub-menu {
-    max-height: 70vh;
-    overflow: hidden;
-    overflow-y: auto;
-  }
-}
 header .container .site-nav .sub-menu li {
   padding: 0;
 }
