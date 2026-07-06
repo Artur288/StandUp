@@ -199,7 +199,7 @@ if ($show_hedliter) {
 	</section>
 <?php endif; ?>
 
-<?php if (!empty($events) && !standup_should_hide_concerts()):
+<?php if (!empty($events)):
 	$first_date_key = '';
 	foreach ($dates as $mn => $md) {
 		ksort($md);

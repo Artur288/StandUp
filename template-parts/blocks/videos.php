@@ -4,7 +4,7 @@ $block = standup_get_videos_block();
 $title = (string) ($args['title_override'] ?? '');
 if ($title === '') $title = $block['title'];
 $videos = $block['videos'];
-if (empty($videos)) {
+if (empty($videos) || standup_should_hide_concerts()) {
 	return;
 }
 

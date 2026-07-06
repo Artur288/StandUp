@@ -55,7 +55,7 @@ $city_map = standup_get_city_home_map();
 
 <?php get_template_part('template-parts/blocks/formats-icons', null, ['city_term_id' => $city_id]); ?>
 
-<?php if (!empty($events) && !standup_should_hide_concerts()):
+<?php if (!empty($events)):
 	$first_date_key = '';
 	$first_dates_in_month = [];
 	foreach ($dates as $month_name => $month_dates) {
