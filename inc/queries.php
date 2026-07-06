@@ -232,7 +232,7 @@ function standup_get_city_schedule(int $city_term_id, ?int $format_term_id = nul
 		$weekday     = STANDUP_RU_WEEKDAYS_SHORT[$weekday_idx];
 
 		$dates[$month_name][$event_date] = [
-			'day'     => sprintf('%02d', $day),
+			'day'     => (string) $day,
 			'weekday' => $weekday,
 		];
 
