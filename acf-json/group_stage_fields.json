@@ -3,6 +3,13 @@
     "title": "Поля площадки",
     "fields": [
         {
+            "key": "field_stage_display_title",
+            "label": "Заголовок",
+            "name": "display_title",
+            "type": "text",
+            "instructions": "Для вывода в списке площадок (выводится название площадки, если не заполнено)"
+        },
+        {
             "key": "field_stage_subtitle",
             "label": "Метро",
             "name": "metro",
@@ -72,5 +79,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000200
+    "modified": 1900000315
 }

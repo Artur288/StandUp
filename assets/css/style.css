@@ -1604,7 +1604,7 @@ footer .footer_bottom li a:hover {
 }
 .event-format__text {
   margin-bottom: 20px;
-  max-height: 255px;
+  max-height: 250px;
   overflow: hidden;
 }
 .event-format__text p {

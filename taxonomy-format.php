@@ -320,15 +320,19 @@ if ($show_hedliter) {
 									<div class="event-controls bottom<?php echo (int) $count_time; ?>">
 										<?php if ($is_excursion): ?><div class="btn js-stage-info-open" data-target="eventInfoModal-<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php else: ?><div class="btn info_btn" data-event-id="<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php endif; ?>
 										<div class="event-buy controls">
-											<div class="buy_block">
-												<div class="btn buy_tickerts"><span>Купить билет</span></div>
-												<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
-												<div class="buy_tickerts_info_time">
-													<?php foreach ($schedule_arr as $s): ?>
-														<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
-													<?php endforeach; ?>
+											<?php if ($is_free_event): ?>
+												<div class="btn js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+											<?php else: ?>
+												<div class="buy_block">
+													<div class="btn buy_tickerts"><span>Купить билет</span></div>
+													<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
+													<div class="buy_tickerts_info_time">
+														<?php foreach ($schedule_arr as $s): ?>
+															<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
+														<?php endforeach; ?>
+													</div>
 												</div>
-											</div>
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>
@@ -347,15 +351,19 @@ if ($show_hedliter) {
 								</div>
 								<h3 class="concert_title"><?php echo esc_html($ev['title']); ?><?php if (!empty($ev['description'])): ?><span><?php echo esc_html($ev['description']); ?></span><?php endif; ?></h3>
 								<div class="controls bottom<?php echo (int) $count_time; ?>">
-									<div class="buy_block">
-										<div class="btn buy_tickerts"><span>Купить билет</span></div>
-										<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
-										<div class="buy_tickerts_info_time">
-											<?php foreach ($schedule_arr as $s): ?>
-												<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
-											<?php endforeach; ?>
+									<?php if ($is_free_event): ?>
+										<div class="btn js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+									<?php else: ?>
+										<div class="buy_block">
+											<div class="btn buy_tickerts"><span>Купить билет</span></div>
+											<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
+											<div class="buy_tickerts_info_time">
+												<?php foreach ($schedule_arr as $s): ?>
+													<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
+												<?php endforeach; ?>
+											</div>
 										</div>
-									</div>
+									<?php endif; ?>
 									<?php if ($is_excursion): ?><div class="btn js-stage-info-open" data-target="eventInfoModal-<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php else: ?><div class="btn info_btn" data-event-id="<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php endif; ?>
 								</div>
 							</div>
