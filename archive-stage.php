@@ -74,6 +74,7 @@ $all_stages = get_posts([
 			<?php endif; ?>
 			<div class="stages_list">
 				<?php $rendered_stage_ids = []; foreach ($all_stages as $stage):
+					if (get_field('hide_from_list', $stage->ID)) continue;
 					$stage_cities = get_the_terms($stage->ID, 'city');
 					if (empty($stage_cities) || is_wp_error($stage_cities)) continue;
 					$rendered_stage_ids[] = $stage->ID;
@@ -82,8 +83,6 @@ $all_stages = get_posts([
 					$thumb_id    = get_post_thumbnail_id($stage->ID);
 					$hover_id    = (int) get_field('thumbnail_hover', $stage->ID);
 					$description = trim(wp_strip_all_tags($stage->post_content));
-					$display_title = (string) get_field('display_title', $stage->ID);
-					if ($display_title === '') $display_title = $stage->post_title;
 					$metro       = (string) get_field('metro', $stage->ID);
 					$address     = (string) get_field('address', $stage->ID);
 					$map_url     = (string) get_field('map_url', $stage->ID);
@@ -92,10 +91,10 @@ $all_stages = get_posts([
 					<div class="stages_item<?php echo $hover_id ? '' : ' stages_item--no-hover'; ?>" data-city="<?php echo esc_attr($city_slugs); ?>">
 						<div class="images">
 							<?php if ($thumb_id): ?>
-								<?php echo wp_get_attachment_image($thumb_id, 'large', false, ['alt' => $display_title, 'class' => 'image_1']); ?>
+								<?php echo wp_get_attachment_image($thumb_id, 'large', false, ['alt' => $stage->post_title, 'class' => 'image_1']); ?>
 							<?php endif; ?>
 							<?php if ($hover_id): ?>
-								<?php echo wp_get_attachment_image($hover_id, 'large', false, ['alt' => $display_title, 'class' => 'image_2']); ?>
+								<?php echo wp_get_attachment_image($hover_id, 'large', false, ['alt' => $stage->post_title, 'class' => 'image_2']); ?>
 							<?php endif; ?>
 						</div>
 						<div class="bottom_image">
@@ -107,7 +106,7 @@ $all_stages = get_posts([
 							<?php endif; ?>
 						</div>
 						<h3 class="stage_title">
-							<?php echo esc_html($display_title); ?>
+							<?php echo esc_html($stage->post_title); ?>
 							<?php if ($description !== ''): ?>
 								<span><?php echo esc_html($description); ?></span>
 							<?php endif; ?>

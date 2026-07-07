@@ -2,8 +2,7 @@
 $stage_id = $args['stage_id'] ?? 0;
 if (!$stage_id) return;
 
-$title   = (string) get_field('display_title', $stage_id);
-if ($title === '') $title = get_the_title($stage_id);
+$title   = get_the_title($stage_id);
 $metro   = (string) get_field('metro', $stage_id);
 $address = (string) get_field('address', $stage_id);
 $gallery = get_field('gallery', $stage_id) ?: [];

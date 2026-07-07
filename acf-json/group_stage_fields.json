@@ -3,11 +3,14 @@
     "title": "Поля площадки",
     "fields": [
         {
-            "key": "field_stage_display_title",
-            "label": "Заголовок",
-            "name": "display_title",
-            "type": "text",
-            "instructions": "Для вывода в списке площадок (выводится название площадки, если не заполнено)"
+            "key": "field_stage_hide_from_list",
+            "label": "Не выводить эту площадку в общем списке",
+            "name": "hide_from_list",
+            "type": "true_false",
+            "ui": 1,
+            "ui_on_text": "Да",
+            "ui_off_text": "Нет",
+            "default_value": 0
         },
         {
             "key": "field_stage_subtitle",
@@ -79,5 +82,5 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "active": true,
-    "modified": 1900000315
+    "modified": 1900000316
 }

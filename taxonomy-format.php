@@ -321,7 +321,9 @@ if ($show_hedliter) {
 										<?php if ($is_excursion): ?><div class="btn js-stage-info-open" data-target="eventInfoModal-<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php else: ?><div class="btn info_btn" data-event-id="<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div><?php endif; ?>
 										<div class="event-buy controls">
 											<?php if ($is_free_event): ?>
-												<div class="btn js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+												<div class="buy_block">
+													<div class="btn js-book-event js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+												</div>
 											<?php else: ?>
 												<div class="buy_block">
 													<div class="btn buy_tickerts"><span>Купить билет</span></div>
@@ -352,7 +354,9 @@ if ($show_hedliter) {
 								<h3 class="concert_title"><?php echo esc_html($ev['title']); ?><?php if (!empty($ev['description'])): ?><span><?php echo esc_html($ev['description']); ?></span><?php endif; ?></h3>
 								<div class="controls bottom<?php echo (int) $count_time; ?>">
 									<?php if ($is_free_event): ?>
-										<div class="btn js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+										<div class="buy_block">
+											<div class="btn js-book-event js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+										</div>
 									<?php else: ?>
 										<div class="buy_block">
 											<div class="btn buy_tickerts"><span>Купить билет</span></div>

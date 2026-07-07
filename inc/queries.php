@@ -254,9 +254,12 @@ function standup_get_city_schedule(int $city_term_id, ?int $format_term_id = nul
 		$hover_id  = (int) get_field('thumbnail_hover', $event->ID);
 		$hover_url = $hover_id ? wp_get_attachment_image_url($hover_id, 'large') : '';
 
+		// на странице конкретного формата — своё название события; на общей странице города (форматы вперемешку) — название формата
+		$card_title = $format_term_id !== null ? $event->post_title : $format_name;
+
 		$events[$event_date][] = [
 			'id'              => $event->ID,
-			'title'           => $format_name,
+			'title'           => $card_title,
 			'description'     => trim(wp_strip_all_tags($event->post_content)),
 			'position'        => $stage->post_title,
 			'schedule'        => $schedule_data,

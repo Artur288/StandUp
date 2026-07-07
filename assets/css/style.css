@@ -686,6 +686,21 @@ header .container .burger {
 .concert .concert_list .controls .buy_block {
   width: 100%;
 }
+.concert .concert_list .controls .js-book-event {
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  overflow: hidden;
+}
+.concert .concert_list .controls .js-book-event:hover span, .concert .concert_list .controls .js-book-event:hover a {
+  padding: 20px 10px;
+}
+.concert .concert_list .controls .js-book-event:hover span::before, .concert .concert_list .controls .js-book-event:hover a::before {
+  border-radius: 100px;
+  height: 130px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .concert .concert_modal {
   position: fixed;
   inset: 0;
