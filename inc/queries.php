@@ -22,15 +22,6 @@ function standup_time_sort_key(string $time): string {
 	return '9999';
 }
 
-// минимальный sort_key из массива schedule-строк ACF (с ключом 'time')
-function standup_schedule_min_time_key(array $schedule): string {
-	$keys = [];
-	foreach ($schedule as $row) {
-		$keys[] = standup_time_sort_key((string) ($row['time'] ?? ''));
-	}
-	return $keys ? min($keys) : '9999';
-}
-
 // "HH:MM" минус N минут → "HH:MM" (для «сбор гостей за полчаса до начала»)
 function standup_time_minus_minutes(string $time, int $minutes): string {
 	if (!preg_match('~^\s*(\d{1,2})[:.](\d{2})~', $time, $m)) {
@@ -259,6 +250,7 @@ function standup_get_city_schedule(int $city_term_id, ?int $format_term_id = nul
 
 		$events[$event_date][] = [
 			'id'              => $event->ID,
+			'menu_order'      => (int) $event->menu_order,
 			'title'           => $card_title,
 			'description'     => trim(wp_strip_all_tags($event->post_content)),
 			'position'        => $stage->post_title,
@@ -268,13 +260,9 @@ function standup_get_city_schedule(int $city_term_id, ?int $format_term_id = nul
 		];
 	}
 
-	// внутри одной даты — сортируем события по самому раннему времени из schedule
+	// внутри одной даты — сортируем события по menu_order
 	foreach ($events as $date_key => &$day_events) {
-		usort($day_events, function ($a, $b) {
-			$ka = $a['schedule'][0]['time_event'] ?? '';
-			$kb = $b['schedule'][0]['time_event'] ?? '';
-			return strcmp(standup_time_sort_key((string) $ka), standup_time_sort_key((string) $kb));
-		});
+		usort($day_events, fn($a, $b) => $a['menu_order'] <=> $b['menu_order']);
 	}
 	unset($day_events);
 

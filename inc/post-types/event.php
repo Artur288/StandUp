@@ -22,7 +22,7 @@ add_action('init', function () {
 		'show_in_rest'  => true,
 		'menu_icon'     => 'dashicons-calendar-alt',
 		'menu_position' => 5,
-		'supports'      => ['title', 'editor', 'thumbnail'],
+		'supports'      => ['title', 'editor', 'thumbnail', 'page-attributes'],
 	]);
 });
 

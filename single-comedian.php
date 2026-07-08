@@ -47,14 +47,12 @@ $upcoming_events = get_posts([
 	'order'          => 'ASC',
 ]);
 
-// добиваем сортировку по времени в schedule — внутри одной даты раньше идёт более ранний сеанс
+// внутри одной даты — сортируем события по menu_order
 usort($upcoming_events, function ($a, $b) {
 	$da = (string) get_field('event_date', $a->ID);
 	$db = (string) get_field('event_date', $b->ID);
 	if ($da !== $db) return strcmp($da, $db);
-	$ta = standup_schedule_min_time_key(get_field('schedule', $a->ID) ?: []);
-	$tb = standup_schedule_min_time_key(get_field('schedule', $b->ID) ?: []);
-	return strcmp($ta, $tb);
+	return $a->menu_order <=> $b->menu_order;
 });
 ?>
 
