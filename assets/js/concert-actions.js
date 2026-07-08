@@ -1,6 +1,7 @@
 document.addEventListener('click', function (e) {
   const buyBtn = e.target.closest('.buy_tickerts');
   if (buyBtn) {
+    if (buyBtn.querySelector('a')) return;
     const controls = buyBtn.closest('.controls');
     if (controls) controls.classList.add('active');
     return;
