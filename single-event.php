@@ -10,7 +10,7 @@ $team_title = get_field('event_team_title');
 $team_text = get_field('event_team_text');
 $team = get_field('event_team');
 $team_hide = get_field('event_team2');
-$stage_id = get_field('stage');
+$stage_id = (int) get_field('stage');
 $ticket_text = get_field('event_ticket_text');
 $ticket_btn_text = get_field('event_ticket_btn');
 $ticket_btn_link = get_field('event_ticket_btn_link');
@@ -125,6 +125,7 @@ $similar = get_field('event_similar');
 	</div>
 </section>
 <?php endif; ?>
+<?php if ($stage_id): ?>
 <section class="event-stage">
     <div class="container">
         <h2>Площадка: «<?php echo get_the_title($stage_id); ?>»</h2>
@@ -135,6 +136,7 @@ $similar = get_field('event_similar');
         </div>
     </div>
 </section>
+<?php endif; ?>
 <?php get_template_part('template-parts/blocks/videos'); ?>
 <?php if ($ticket_text) : ?>
 <section class="subscribe">

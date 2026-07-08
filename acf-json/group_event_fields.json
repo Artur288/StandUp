@@ -120,7 +120,7 @@
             ],
             "return_format": "id",
             "ui": 1,
-            "allow_null": 0,
+            "allow_null": 1,
             "multiple": 0,
             "taxonomy": [],
             "bidirectional_target": []
@@ -886,5 +886,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1783500000
+    "modified": 1783535173
 }
