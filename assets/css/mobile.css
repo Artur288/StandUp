@@ -115,6 +115,7 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .concert .concert_list .concert_title {
     font-size: 28px;
+    min-height: 57px;
   }
   .stages .stages_list {
     gap: 20px;
@@ -177,6 +178,7 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .concert .concert_list .concert_title {
     font-size: 22px;
+    min-height: 46px;
   }
   .concert .concert_list .concert_title span {
     font-size: 18px;
@@ -336,6 +338,7 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .concert .concert_list .concert_title {
     font-size: 18px;
+    min-height: 39px;
   }
   .concert .concert_list .concert_title span {
     font-size: 16px;
@@ -555,6 +558,7 @@ Please do NOT modify it directly or you risk your changes to be overwritten.
   }
   .concert .concert_list .concert_title {
     font-size: 14px;
+    min-height: 27px;
   }
   .concert .concert_list .concert_title span {
     font-size: 10px;
