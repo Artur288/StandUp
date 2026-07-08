@@ -162,17 +162,23 @@ usort($upcoming_events, function ($a, $b) {
 							</div>
 							<h3 class="concert_title"><?php echo esc_html($format_name); ?><?php if ($event->post_title): ?><span><?php echo esc_html($event->post_title); ?></span><?php endif; ?></h3>
 							<div class="controls bottom<?php echo (int) $count_class; ?>">
-								<div class="buy_block">
-									<div class="btn buy_tickerts"><span>Купить билет</span></div>
-									<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
-									<div class="buy_tickerts_info_time">
-										<?php foreach ($schedule as $row): ?>
-											<div class="btn tickets_list">
-												<a href="<?php echo esc_url($row['ticket_url'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($row['time'] ?? ''); ?></a>
-											</div>
-										<?php endforeach; ?>
+								<?php if (count($schedule) === 1): ?>
+									<div class="buy_block">
+										<div class="btn buy_tickerts"><a href="<?php echo esc_url($schedule[0]['ticket_url'] ?? '#'); ?>"><span>Купить билет</span></a></div>
 									</div>
-								</div>
+								<?php else: ?>
+									<div class="buy_block">
+										<div class="btn buy_tickerts"><span>Купить билет</span></div>
+										<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
+										<div class="buy_tickerts_info_time">
+											<?php foreach ($schedule as $row): ?>
+												<div class="btn tickets_list">
+													<a href="<?php echo esc_url($row['ticket_url'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($row['time'] ?? ''); ?></a>
+												</div>
+											<?php endforeach; ?>
+										</div>
+									</div>
+								<?php endif; ?>
 								<div class="btn info_btn" data-event-id="<?php echo (int) $event->ID; ?>"><span>Инфо</span></div>
 							</div>
 						</div>

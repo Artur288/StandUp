@@ -576,6 +576,8 @@ header .container .burger {
 }
 .concert .concert_list .concert_item {
   max-width: 452px;
+  display: flex;
+  flex-direction: column;
 }
 .concert .concert_list .images {
   position: relative;
@@ -621,6 +623,18 @@ header .container .burger {
   line-height: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+}
+@media (max-width: 1024px) {
+  .concert .concert_list .concert_title {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .concert .concert_list .concert_title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }
 .concert .concert_list .concert_title span {
   color: rgba(238, 237, 222, 0.7);
@@ -634,7 +648,6 @@ header .container .burger {
   display: flex;
   justify-content: space-between;
   gap: 15px;
-  margin-top: 20px;
   display: grid;
   grid-template-columns: 1fr 0.5fr;
 }

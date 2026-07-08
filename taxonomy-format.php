@@ -324,6 +324,10 @@ if ($show_hedliter) {
 												<div class="buy_block">
 													<div class="btn js-book-event js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
 												</div>
+											<?php elseif (count($schedule_arr) === 1): ?>
+												<div class="buy_block">
+													<div class="btn buy_tickerts"><a href="<?php echo esc_url($schedule_arr[0]['bilet'] ?? '#'); ?>"><span>Купить билет</span></a></div>
+												</div>
 											<?php else: ?>
 												<div class="buy_block">
 													<div class="btn buy_tickerts"><span>Купить билет</span></div>
@@ -356,6 +360,10 @@ if ($show_hedliter) {
 									<?php if ($is_free_event): ?>
 										<div class="buy_block">
 											<div class="btn js-book-event js-stage-info-open" data-target="freeEventBookingModal-<?php echo (int) $ev['id']; ?>"><span>Бронировать</span></div>
+										</div>
+									<?php elseif (count($schedule_arr) === 1): ?>
+										<div class="buy_block">
+											<div class="btn buy_tickerts"><a href="<?php echo esc_url($schedule_arr[0]['bilet'] ?? '#'); ?>"><span>Купить билет</span></a></div>
 										</div>
 									<?php else: ?>
 										<div class="buy_block">

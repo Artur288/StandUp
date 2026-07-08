@@ -136,15 +136,21 @@ $city_map = standup_get_city_home_map();
 							</div>
 							<h3 class="concert_title"><?php echo esc_html($ev['title']); ?><?php if (!empty($ev['description'])): ?><span><?php echo esc_html($ev['description']); ?></span><?php endif; ?></h3>
 							<div class="controls bottom<?php echo (int) $count_time; ?>">
-								<div class="buy_block">
-									<div class="btn buy_tickerts"><span>Купить билет</span></div>
-									<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
-									<div class="buy_tickerts_info_time">
-										<?php foreach ($schedule_arr as $s): ?>
-											<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
-										<?php endforeach; ?>
+								<?php if (count($schedule_arr) === 1): ?>
+									<div class="buy_block">
+										<div class="btn buy_tickerts"><a href="<?php echo esc_url($schedule_arr[0]['bilet'] ?? '#'); ?>"><span>Купить билет</span></a></div>
 									</div>
-								</div>
+								<?php else: ?>
+									<div class="buy_block">
+										<div class="btn buy_tickerts"><span>Купить билет</span></div>
+										<div class="btn buy_tickerts_hide"><span>Скрыть время</span></div>
+										<div class="buy_tickerts_info_time">
+											<?php foreach ($schedule_arr as $s): ?>
+												<div class="btn tickets_list"><a href="<?php echo esc_url($s['bilet'] ?? '#'); ?>" class="ticket_time"><?php echo esc_html($s['time_event'] ?? ''); ?></a></div>
+											<?php endforeach; ?>
+										</div>
+									</div>
+								<?php endif; ?>
 								<div class="btn info_btn" data-event-id="<?php echo (int) $ev['id']; ?>"><span>Инфо</span></div>
 							</div>
 						</div>
