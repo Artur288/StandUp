@@ -95,12 +95,12 @@ h2 {
 .btn:hover {
   color: #EEEDDE;
 }
-.btn:hover span, .btn:hover a {
+.btn:hover > span, .btn:hover > a {
   position: relative;
   z-index: 1;
   border-radius: 20px;
 }
-.btn:hover span::before, .btn:hover a::before {
+.btn:hover > span::before, .btn:hover > a::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -660,14 +660,17 @@ header .container .burger {
 .concert .concert_list .controls .info_btn, .concert .concert_list .controls .buy_tickerts, .concert .concert_list .controls .buy_tickerts_hide {
   overflow: hidden;
 }
-.concert .concert_list .controls .info_btn:hover span, .concert .concert_list .controls .info_btn:hover a, .concert .concert_list .controls .buy_tickerts:hover span, .concert .concert_list .controls .buy_tickerts:hover a, .concert .concert_list .controls .buy_tickerts_hide:hover span, .concert .concert_list .controls .buy_tickerts_hide:hover a {
+.concert .concert_list .controls .info_btn:hover > span, .concert .concert_list .controls .info_btn:hover > a, .concert .concert_list .controls .buy_tickerts:hover > span, .concert .concert_list .controls .buy_tickerts:hover > a, .concert .concert_list .controls .buy_tickerts_hide:hover > span, .concert .concert_list .controls .buy_tickerts_hide:hover > a {
   padding: 20px 10px;
 }
-.concert .concert_list .controls .info_btn:hover span::before, .concert .concert_list .controls .info_btn:hover a::before, .concert .concert_list .controls .buy_tickerts:hover span::before, .concert .concert_list .controls .buy_tickerts:hover a::before, .concert .concert_list .controls .buy_tickerts_hide:hover span::before, .concert .concert_list .controls .buy_tickerts_hide:hover a::before {
+.concert .concert_list .controls .info_btn:hover > span::before, .concert .concert_list .controls .info_btn:hover > a::before, .concert .concert_list .controls .buy_tickerts:hover > span::before, .concert .concert_list .controls .buy_tickerts:hover > a::before, .concert .concert_list .controls .buy_tickerts_hide:hover > span::before, .concert .concert_list .controls .buy_tickerts_hide:hover > a::before {
   border-radius: 100px;
   height: 130px;
   top: 50%;
   transform: translateY(-50%);
+}
+.concert .concert_list .controls .buy_tickerts a {
+  font-weight: 700;
 }
 .concert .concert_list .controls .info_btn {
   color: rgba(238, 237, 222, 0.7);
